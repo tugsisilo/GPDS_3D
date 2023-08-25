@@ -1,0 +1,601 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects &#8212; 3D Graphics Basics with Blender</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown/geom_node/geom_node_project';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Scripting" href="../scripting/scripting.html" />
+    <link rel="prev" title="More about Geometry Node" href="more_nodes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gp_logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/gp_logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    3D Graphics Basics with Blender
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../UI/UI.html">UI</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../UI/elements.html">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../UI/navigation.html">Navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modeling/modeling.html">Modeling</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/object.html">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/mesh.html">Mesh Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/curve.html">Curve Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/modifier.html">Modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/animation.html">Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/constraint.html">Constraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/modeling_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../material/material.html">Material</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../material/principle.html">Material Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/PBR.html">Physically Based Rendering (PBR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/node_tree.html">More about Shader Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/material_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../render/render.html">Render</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../render/engine.html">Rendering engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/lighting.html">Lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/camera.html">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/compositing.html">Compositing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/rendering.html">Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/render_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="geom_node.html">Geometry Node</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="node_tree.html">Geometry Node Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_nodes.html">More about Geometry Node</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scripting/scripting.html">Scripting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/tooltip.html">Scripting Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/py_script.html">API Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/nodes.html">Node Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/scripting_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras/extra.html">Extras</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras/sculpting.html">Sculpting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/physics_particles.html">Physics Simulation and Particle System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/rigging.html">Rigging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/more_addons.html">More about Add-ons</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/markdown/geom_node/geom_node_project.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Projects</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="projects">
+<span id="gn-proj"></span><h1>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">#</a></h1>
+<p>Delving into geometry nodes may appear daunting, but you will be able to create all kinds of stunning effects once you get the hang of it. Here are some examples to get you started.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Curve-controlled fences</label><div class="sd-tab-content docutils">
+<p>This node tree creates an uneven terrain and puts down fences below a curve object.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_fences_demo.gif"><img alt="../../_images/proj_fences_demo.gif" src="../../_images/proj_fences_demo.gif" style="width: 100%;" /></a>
+</div>
+<p>To create the terrain, a <strong>Musgrave Texture</strong> is used to adjust the locations of the vertices on the Z axis. Like <strong>Displacement</strong> in <a class="reference internal" href="../material/PBR.html#pbr-mat"><span class="std std-ref">shaders</span></a>, the input plane needs to have enough vertices to make it happen.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_fences_terrain.png"><img alt="../../_images/proj_fences_terrain.png" src="../../_images/proj_fences_terrain.png" style="width: 100%;" /></a>
+</div>
+<p>An <strong>Object Info</strong> node is used to retrieve the information from the curve object, and by giving it a profile we are able to determine the points below the curve with the <strong>Raycast</strong> node. The <strong>Merge by Distance</strong> node controls the number of points.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Linking the <code class="docutils literal notranslate"><span class="pre">Object</span></code> input socket of the <strong>Object Info</strong> node to the <strong>Group Input</strong> node will make it possible to choose the curve object in the <strong>Geometry nodes</strong> modifier.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_fences_points.png"><img alt="../../_images/proj_fences_points.png" src="../../_images/proj_fences_points.png" style="width: 100%;" /></a>
+</div>
+<p>The fences are made of cylinders with twisted tops and put on the points with random scale and rotation.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can make the fences manually and replace the nodes in the “Fence” frame with an <strong>Object Info</strong> node.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_fences_fence.png"><img alt="../../_images/proj_fences_fence.png" src="../../_images/proj_fences_fence.png" style="width: 100%;" /></a>
+</div>
+<p>There is no shade auto smooth node in geometry nodes but you can achieve the same effect by selecting the faces to shade smooth with <strong>Edge Angle</strong> node.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_fences_auto_smooth.png"><img alt="../../_images/proj_fences_auto_smooth.png" src="../../_images/proj_fences_auto_smooth.png" style="width: 100%;" /></a>
+</div>
+<p>Combining all the parts and we have the whole node tree.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_fences_auto_overview.png"><img alt="../../_images/proj_fences_auto_overview.png" src="../../_images/proj_fences_auto_overview.png" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Grass deformation</label><div class="sd-tab-content docutils">
+<p>This geometry node tree creates grass-like instances on a plane and deforms them based on their distance from another object.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_gd_demo.gif"><img alt="../../_images/proj_gd_demo.gif" src="../../_images/proj_gd_demo.gif" style="width: 100%;" /></a>
+</div>
+<p>A straightened <strong>Bezier Segment</strong> is used to represent a grass blade, and its instances are randomly distributed on the plane. A <strong>Random Value</strong> node connected to the <code class="docutils literal notranslate"><span class="pre">Scale</span></code> input socket of the <strong>Instance on Points</strong> node gives the grass some size variation, and the vector pointing from each instance to the object location is calculated to rotate the grass blades to face the object with the help of the <strong>Align Euler to Vector</strong> node. An additional <strong>Rotate Instances</strong> node adds slight random rotation to the instances, helping them to look more natural.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You need to give the curves a profile to see their facing.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_gd_grass_curve.png"><img alt="../../_images/proj_gd_grass_curve.png" src="../../_images/proj_gd_grass_curve.png" style="width: 100%;" /></a>
+</div>
+<p>To bend the grass blades in different directions, first we need to use <strong>Realize Instances</strong> to give them real geometry. Reuse the vector calculated in the last frame to move the control points, also adjust the handles to make a nice curve.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>The blue diamond reroute is connected to the <code class="docutils literal notranslate"><span class="pre">Vector</span></code> output socket of the <strong>Vector Math(Subtract)</strong> node in the previous frame.</p></li>
+<li><p>For simplicity, This approach actually stretches the grass blades.</p></li>
+</ul>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_gd_bend.png"><img alt="../../_images/proj_gd_bend.png" src="../../_images/proj_gd_bend.png" style="width: 100%;" /></a>
+</div>
+<p>Add a profile curve to finalize the look. The <strong>Curve Line</strong> node is used to make the profile curve, and its length is proportional to the length of the grass. The taper of the grass blades is calculated based on the difference between the length of the curve(<strong>Spline Length</strong> node) and the distance to each control point  (<code class="docutils literal notranslate"><span class="pre">Length</span></code> output of the <strong>Spline Parameter</strong> node), with some adjustments.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The grey reroute is connected to the <strong>Value</strong> node in the first frame.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_gd_profile.png"><img alt="../../_images/proj_gd_profile.png" src="../../_images/proj_gd_profile.png" style="width: 100%;" /></a>
+</div>
+<p>Adding material (diffuse color only in this example) and combining the ground and grass with <strong>Set Material</strong> and <strong>Join Geometry</strong> nodes gives the final result. Add a camera pointing at the plane and save this project and you can use it in the next chapter.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_gd_overview.png"><img alt="../../_images/proj_gd_overview.png" src="../../_images/proj_gd_overview.png" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Teleportation</label><div class="sd-tab-content docutils">
+<p>This node tree creates a teleportation effect.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_tp_demo.gif"><img alt="../../_images/proj_tp_demo.gif" src="../../_images/proj_tp_demo.gif" style="width: 100%;" /></a>
+</div>
+<p>First we make the source object follow the movement of the control object on the X and Y axes using the <strong>Transform Geometry</strong> node. To get the location of the control object, an <strong>Object Info</strong> node is added.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The Z axis of the object is set to 0, but since it is the local axis you can still move the object up and down without breaking the effect.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_tp_move.png"><img alt="../../_images/proj_tp_move.png" src="../../_images/proj_tp_move.png" style="width: 100%;" /></a>
+</div>
+<p>To create the particle ring effect around the object, we first create a sphere enveloping the source object. The <strong>Bounding Box</strong> node is used to calculate the radius of the UV sphere, and the sphere is moved to the same location as the source object.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Translation</span></code> input of the <strong>Transform Geometry</strong> node here is the same as the one above.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_tp_sphere.png"><img alt="../../_images/proj_tp_sphere.png" src="../../_images/proj_tp_sphere.png" style="width: 100%;" /></a>
+</div>
+<p>The points are generated on the surface of the sphere where the Z coordinates are close to the one of the control object. Instances of an ico sphere are used to represent the particle effect.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>The second input of the <strong>Math(Compare)</strong> node is the Z location of the control object.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Seed</span></code> of the <strong>Distribute Points on Faces</strong> node has a driver(<code class="docutils literal notranslate"><span class="pre">#frame</span></code>) to shuffle the points every frame.</p></li>
+</ul>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_tp_points.png"><img alt="../../_images/proj_tp_points.png" src="../../_images/proj_tp_points.png" style="width: 100%;" /></a>
+</div>
+<p>To “teleport” the source object, use a <strong>Delete Geometry</strong> node to delete all geometry below the Z location of the control object.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Threshold</span></code> input of the <code class="docutils literal notranslate"><span class="pre">Math(Less</span> <span class="pre">Than)</span></code> node is the Z location of the control object.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_tp_delete.png"><img alt="../../_images/proj_tp_delete.png" src="../../_images/proj_tp_delete.png" style="width: 100%;" /></a>
+</div>
+<p>Combine the geometry and the instances, give the control object some simple animation, and we have the result.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_tp_overview.png"><img alt="../../_images/proj_tp_overview.png" src="../../_images/proj_tp_overview.png" style="width: 100%;" /></a>
+</div>
+<p>Feel free to tune the parameters and add materials to it.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The glow is added in <a class="reference internal" href="../render/compositing.html#compositing"><span class="std std-ref">Compositing</span></a>.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_tp_render.gif"><img alt="../../_images/proj_tp_render.gif" src="../../_images/proj_tp_render.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./markdown\geom_node"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="more_nodes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">More about Geometry Node</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../scripting/scripting.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Scripting</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Graduate Program in Data Science, Tohoku University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

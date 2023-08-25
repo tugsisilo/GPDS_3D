@@ -1,0 +1,653 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Object &#8212; 3D Graphics Basics with Blender</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown/modeling/object';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Mesh Modeling" href="mesh.html" />
+    <link rel="prev" title="Modeling" href="modeling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gp_logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/gp_logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    3D Graphics Basics with Blender
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../UI/UI.html">UI</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../UI/elements.html">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../UI/navigation.html">Navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modeling.html">Modeling</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html">Mesh Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="curve.html">Curve Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modifier.html">Modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constraint.html">Constraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../material/material.html">Material</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../material/principle.html">Material Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/PBR.html">Physically Based Rendering (PBR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/node_tree.html">More about Shader Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/material_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../render/render.html">Render</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../render/engine.html">Rendering engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/lighting.html">Lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/camera.html">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/compositing.html">Compositing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/rendering.html">Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/render_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geom_node/geom_node.html">Geometry Node</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/node_tree.html">Geometry Node Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/more_nodes.html">More about Geometry Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/geom_node_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scripting/scripting.html">Scripting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/tooltip.html">Scripting Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/py_script.html">API Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/nodes.html">Node Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/scripting_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras/extra.html">Extras</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras/sculpting.html">Sculpting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/physics_particles.html">Physics Simulation and Particle System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/rigging.html">Rigging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/more_addons.html">More about Add-ons</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/markdown/modeling/object.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Object</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-an-object">Adding an object</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outliner-and-collection">Outliner and Collection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolbar">Toolbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#origin">Origin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-and-local-axes">Global and Local axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-tools">Object tools</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="object">
+<span id="id1"></span><h1>Object<a class="headerlink" href="#object" title="Permalink to this headline">#</a></h1>
+<p>When you open Blender or make a new file, you will see things already in the viewport: a cube(a.k.a the default cube), a point light, and a camera. These are all <strong>Objects</strong> in Blender, therefore they have some common properties. To interact with objects in the 3D viewport, check the header and make sure it is in <strong>Object Mode</strong>.</p>
+<div class="section" id="adding-an-object">
+<h2>Adding an object<a class="headerlink" href="#adding-an-object" title="Permalink to this headline">#</a></h2>
+<p>Click <code class="docutils literal notranslate"><span class="pre">Add</span></code> on the header or press <kbd>Shift + A</kbd> to bring up the Add menu, then choose the object you want to add to the scene. A menu will show up in the bottom left corner, allowing you to tweak the shape you just added. This menu will disappear and will not show up again after any other operation.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The mesh/curve objects you are able to add this way are refered as <strong>Primitive</strong>.</p>
+</div>
+<p>The object will appear at the position of the <strong>3D Cursor</strong>, which is the thing you can see in the viewport that looks like a life preserver but is way too thin to save anybody. To move it, hold <kbd>Shift</kbd> and <kbd>Right Mouse Click</kbd>, or press <kbd>Shift + S</kbd> and choose the option you want on the radial menu.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/add.gif"><img alt="../../_images/add.gif" src="../../_images/add.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<div class="section" id="outliner-and-collection">
+<h2>Outliner and Collection<a class="headerlink" href="#outliner-and-collection" title="Permalink to this headline">#</a></h2>
+<p>The <strong>Outliner</strong> area is on the top right by default, and it lists all the objects in the scene. <kbd>Left Mouse Click</kbd> on the little triangle reveals the data linked to the object. You can also rename your object by double-clicking its name. <strong>Collection</strong> is a tool to organize your objects, you can make new ones by <kbd>Right Mouse Click</kbd> and choosing <code class="docutils literal notranslate"><span class="pre">New</span> <span class="pre">Collection</span></code> in the menu. To move an object into the new collection, hold <kbd>Left Mouse Button</kbd> on it and drag it there.</p>
+<div class="figure align-default">
+<img alt="../../_images/outliner.gif" src="../../_images/outliner.gif" />
+</div>
+</div>
+<div class="section" id="toolbar">
+<h2>Toolbar<a class="headerlink" href="#toolbar" title="Permalink to this headline">#</a></h2>
+<p>The <strong>Toolbar</strong> contains tools represented as icons on the left part of an area, its contents depend on the type of the area and the mode the area is in. <kbd>Left Mouse Click</kbd> to select a tool, and for the tools with a small triangle at the bottom right corner, you can hold <kbd>Left Mouse Button</kbd> to choose a variant.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can hide the <strong>Toolbar</strong> by dragging its right border to the left. To undo that, drag the <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> to the right.</p>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/toolbar.gif" src="../../_images/toolbar.gif" />
+</div>
+</div>
+<div class="section" id="origin">
+<h2>Origin<a class="headerlink" href="#origin" title="Permalink to this headline">#</a></h2>
+<p>Every object has an <strong>Origin</strong> point, and the point is displayed as a small orange dot when the object is selected. The origin decides the position of the object, and object rotation and scaling are calculated with respect to this point.</p>
+</div>
+<div class="section" id="global-and-local-axes">
+<h2>Global and Local axes<a class="headerlink" href="#global-and-local-axes" title="Permalink to this headline">#</a></h2>
+<p>The red, green, and blue (not always shown by default) lines displayed on the viewport represent X, Y, and Z axis respectively. These are called <strong>Global Axes</strong> and they are for the global space we have been working with so far. Besides that, all objects have their own <strong>Local Axes</strong>, and you can check that by ticking <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Properties</span> <span class="pre">&gt;</span> <span class="pre">Viewport</span> <span class="pre">Display</span> <span class="pre">&gt;</span> <span class="pre">Show</span> <span class="pre">axes</span></code> in the <strong>Properties</strong> area (at the bottom right by default).</p>
+<div class="figure align-default">
+<img alt="../../_images/global_local.PNG" src="../../_images/global_local.PNG" />
+</div>
+</div>
+<div class="section" id="object-tools">
+<span id="id2"></span><h2>Object tools<a class="headerlink" href="#object-tools" title="Permalink to this headline">#</a></h2>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If you can’t find where a tool is, you can always press <kbd>F3</kbd> to search for it.</p>
+</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Selection</label><div class="sd-tab-content docutils">
+<p>By default, <kbd>Left Mouse Click</kbd> selects an object (in the 3D viewport or the outliner), and the selected object should have a bright orange border. To select multiple objects, hold down <kbd>Shift</kbd> and <kbd>Left Mouse Click</kbd> or hold <kbd>Left Mouse Button</kbd> and drag to use <strong>Box Selection</strong>. The last selected object will be the <strong>Active Object</strong>, with a bright orange border, and the others in dark orange. To deselect an object, hold <kbd>Shift</kbd> and <kbd>Left Mouse Click</kbd> on a selected object, or just <kbd>Left Mouse Click</kbd> on empty space to deselect all. Blender offers various tools for selection, you can access them using the <code class="docutils literal notranslate"><span class="pre">Select</span></code> menu on the header.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/select.gif"><img alt="../../_images/select.gif" src="../../_images/select.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Move</label><div class="sd-tab-content docutils">
+<p>Press <kbd>G</kbd> or use the <code class="docutils literal notranslate"><span class="pre">Move</span></code> tool in the toolbar to move an object. Like most operations in Blender, <kbd>Left Mouse Click</kbd> to confirm and <kbd>Right Mouse Click</kbd> to cancel the change. To snap the object to the grid, <kbd>Left Mouse Click</kbd> the magnet icon on the header to turn it on or hold <kbd>Ctrl</kbd> to use it temporarily. If you want the object to move strictly on a certain axis, press <kbd>X</kbd>, <kbd>Y</kbd>, or <kbd>Z</kbd> to lock movement on the respective global axis, or press twice for local axes. Alternatively, press <kbd>Shift + X</kbd>, <kbd>Shift + Y</kbd>, or <kbd>Shift + Z</kbd> to lock the movement on the other two axes. To make finer adjustments, holding <kbd>Shift</kbd> lets you move much slower. Last but not least, if you want the object to be in an exact location, open the sidebar and fill in the coordinates on the <code class="docutils literal notranslate"><span class="pre">Item</span></code> tab.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/move.gif"><img alt="../../_images/move.gif" src="../../_images/move.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Rotate(Euler)</label><div class="sd-tab-content docutils">
+<p>Press <kbd>R</kbd> or use the <code class="docutils literal notranslate"><span class="pre">Rotate</span></code> tool in the <code class="docutils literal notranslate"><span class="pre">Toolbar</span></code> to rotate an object, <kbd>Left Mouse Click</kbd> to confirm and <kbd>Right Mouse Click</kbd> to discard the change. By default, the object rotates around an axis perpendicular to the view, but you can press <kbd>X</kbd>, <kbd>Y</kbd>, or <kbd>Z</kbd> to change the rotation axis to the respective global axis, or press twice for local axes. To have more precise control, holding down <kbd>Ctrl</kbd> lets you rotate by 5-degree increments and <kbd>Ctrl + Shift</kbd> by 1 degree. An alternative free rotation mode, <code class="docutils literal notranslate"><span class="pre">Trackball</span> <span class="pre">Rotation</span></code> can be accessed by double pressing <kbd>R</kbd>. You can also input the exact angles you want on the <code class="docutils literal notranslate"><span class="pre">Item</span></code> tab in the sidebar.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>For all tools that allows you to adjust the effect by moving you cursor (rotation, scaling, etc.), put your cursor away from the center of the screen before activating them will give you finer control.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/rotate.gif"><img alt="../../_images/rotate.gif" src="../../_images/rotate.gif" style="width: 100%;" /></a>
+</div>
+<p>The pivot point of the rotation is determined by the choice of <code class="docutils literal notranslate"><span class="pre">Transform</span> <span class="pre">Pivot</span> <span class="pre">Point</span></code> and you can change it using the second dropdown menu located in the middle of the header.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/rotate_pivot.gif"><img alt="../../_images/rotate_pivot.gif" src="../../_images/rotate_pivot.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Scale</label><div class="sd-tab-content docutils">
+<p>To scale up or down a mesh object, press <kbd>S</kbd> or use the <code class="docutils literal notranslate"><span class="pre">Scale</span></code> tool in the toolbar, <kbd>Left Mouse Click</kbd> to confirm and <kbd>Right Mouse Click</kbd> to cancel the change. Hold <kbd>Ctrl</kbd> to scale by 0.1x increments and <kbd>Ctrl + Shift</kbd> by 0.01x. To scale along a certain axis, press <kbd>X</kbd>, <kbd>Y</kbd>, or <kbd>Z</kbd> for the respective global axis or twice for the local one. Scaling is relative to the pivot point, check the <strong>Rotate</strong> tab if you want to know how to change it.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/Scale.gif"><img alt="../../_images/Scale.gif" src="../../_images/Scale.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Copy</label><div class="sd-tab-content docutils">
+<p>To copy an object, select it and press <kbd>Shift + D</kbd>. This operation will copy the object and activate <code class="docutils literal notranslate"><span class="pre">Move</span></code> tool (see <code class="docutils literal notranslate"><span class="pre">Move</span></code> tab for the details) for the duplicate. Alternatively, you can <kbd>Right Mouse Click</kbd> to bring up the <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Context</span> <span class="pre">Menu</span></code> and use the <code class="docutils literal notranslate"><span class="pre">Copy</span> <span class="pre">Objects</span></code> and <code class="docutils literal notranslate"><span class="pre">Paste</span> <span class="pre">Objects</span></code> there.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Trasformations, like moving, rotating, and scaling, are not shared because they are on the object level.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/copy.gif"><img alt="../../_images/copy.gif" src="../../_images/copy.gif" style="width: 100%;" /></a>
+</div>
+<p>Another kind of duplication is called <strong>Linked</strong> copy, the copy will share the same mesh data with the original object. As a result, any alteration to the mesh will be shared between the two objects. To do it, select an object and press <kbd>Alt + D</kbd> or choose <code class="docutils literal notranslate"><span class="pre">Duplicate</span> <span class="pre">Linked</span></code> in the <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Context</span> <span class="pre">Menu</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/copy_linked.gif"><img alt="../../_images/copy_linked.gif" src="../../_images/copy_linked.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Hide</label><div class="sd-tab-content docutils">
+<p>When you are working on an object with multiple other objects in the same scene, you may find your view obstructed. To hide an object in the viewport, select it and press <kbd>H</kbd> or <kbd>Left Mouse Click</kbd> the eye icon in the outliner. To undo it, <kbd>Left Mouse Click</kbd> the closed eye icon in the outliner, or press <kbd>Alt + H</kbd> to unhide all objects in the scene. Another option is to use <strong>Local View</strong> to hide all but the selected object, press <kbd>/</kbd> to enter the view and press it again to exit.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/hide.gif"><img alt="../../_images/hide.gif" src="../../_images/hide.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Join</label><div class="sd-tab-content docutils">
+<p>For mesh objects, press <kbd>Alt + H</kbd> or use <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">&gt;</span> <span class="pre">join</span></code> on the header to merge all the selected into the active object.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/join.gif"><img alt="../../_images/join.gif" src="../../_images/join.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
+Parent</label><div class="sd-tab-content docutils">
+<p>In Blender, the concept of <strong>Parent</strong> is like ducklings following their mother, not the scary and stressful kind. Select multiple mesh objects, and make sure the active object is the one you want to be the parent, then press <kbd>Ctrl + P</kbd> or <kbd>Right Mouse Click</kbd> to bring up the object context menu and choose <code class="docutils literal notranslate"><span class="pre">Parent</span> <span class="pre">&gt;</span> <span class="pre">Object</span></code>. The transformation (location, rotation, scale) of the parent object will affect the child objects, but not the other way around. To clear parenting, select the child object and <kbd>Alt + P</kbd> or choose <code class="docutils literal notranslate"><span class="pre">Parent</span> <span class="pre">&gt;</span> <span class="pre">Clear</span> <span class="pre">Parent</span></code> in the object context menu.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/parent.gif"><img alt="../../_images/parent.gif" src="../../_images/parent.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
+Delete</label><div class="sd-tab-content docutils">
+<p>To delete an object, select it then press <kbd>X</kbd> and confirm or <kbd>Right Mouse Click</kbd> to bring up the object context menu and choose <code class="docutils literal notranslate"><span class="pre">Delete</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/delete.gif"><img alt="../../_images/delete.gif" src="../../_images/delete.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-9" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
+Shade Smooth</label><div class="sd-tab-content docutils">
+<p><strong>Shade Smooth</strong> is a feature to make low poly models look smooth without changing geometry. It works by linearly interpolating normals(see <a class="reference internal" href="mesh.html#mesh-editing"><span class="std std-ref">next section</span></a>) to mimic a perfectly smooth surface. To turn it on, select the mesh object and <kbd>Right Mouse Click</kbd> to open the <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Context</span> <span class="pre">Menu</span></code>, then select <code class="docutils literal notranslate"><span class="pre">Shade</span> <span class="pre">Smooth</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/shade_smooth.gif"><img alt="../../_images/shade_smooth.gif" src="../../_images/shade_smooth.gif" style="width: 100%;" /></a>
+</div>
+<p>For certain objects, you may want to preserve some sharp edges instead of smooth-shading the entire surface. In that case, choose <code class="docutils literal notranslate"><span class="pre">Shade</span> <span class="pre">Auto</span> <span class="pre">Smooth</span></code> and adjust the <code class="docutils literal notranslate"><span class="pre">Angle</span></code> to get the desired effect. If you want more control over which edge should not be smoothed, select the edges in <strong>Edit Mode</strong>(see <a class="reference internal" href="mesh.html#mesh-editing"><span class="std std-ref">next section</span></a>) then <kbd>Right Mouse Click</kbd> and select <code class="docutils literal notranslate"><span class="pre">Mark</span> <span class="pre">Sharp</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/shade_auto_smooth.gif"><img alt="../../_images/shade_auto_smooth.gif" src="../../_images/shade_auto_smooth.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./markdown\modeling"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="modeling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Modeling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="mesh.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Mesh Modeling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-an-object">Adding an object</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#outliner-and-collection">Outliner and Collection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#toolbar">Toolbar</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#origin">Origin</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-and-local-axes">Global and Local axes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-tools">Object tools</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Graduate Program in Data Science, Tohoku University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

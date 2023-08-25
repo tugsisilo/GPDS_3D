@@ -1,0 +1,617 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modifier &#8212; 3D Graphics Basics with Blender</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown/modeling/modifier';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Animation" href="animation.html" />
+    <link rel="prev" title="Curve Modeling" href="curve.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gp_logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/gp_logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    3D Graphics Basics with Blender
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../UI/UI.html">UI</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../UI/elements.html">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../UI/navigation.html">Navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modeling.html">Modeling</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="object.html">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mesh.html">Mesh Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="curve.html">Curve Modeling</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constraint.html">Constraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../material/material.html">Material</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../material/principle.html">Material Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/PBR.html">Physically Based Rendering (PBR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/node_tree.html">More about Shader Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/material_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../render/render.html">Render</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../render/engine.html">Rendering engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/lighting.html">Lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/camera.html">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/compositing.html">Compositing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/rendering.html">Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/render_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geom_node/geom_node.html">Geometry Node</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/node_tree.html">Geometry Node Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/more_nodes.html">More about Geometry Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/geom_node_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scripting/scripting.html">Scripting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/tooltip.html">Scripting Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/py_script.html">API Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/nodes.html">Node Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/scripting_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras/extra.html">Extras</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras/sculpting.html">Sculpting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/physics_particles.html">Physics Simulation and Particle System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/rigging.html">Rigging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/more_addons.html">More about Add-ons</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/markdown/modeling/modifier.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modifier</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-modifier">Adding modifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visibility">Visibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-a-modifier">Applying a modifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commonly-used-modifiers">Commonly used modifiers</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="modifier">
+<span id="id1"></span><h1>Modifier<a class="headerlink" href="#modifier" title="Permalink to this headline">#</a></h1>
+<p>Modifiers are functions that change an object’s geometry without affecting its underlying mesh data. They let you easily apply various effects and reverse them as you need.</p>
+<div class="section" id="adding-modifier">
+<span id="modifier-add"></span><h2>Adding modifier<a class="headerlink" href="#adding-modifier" title="Permalink to this headline">#</a></h2>
+<p>Modifiers are properties of an object, to add one, make sure you are in object mode, then select an eligible object and choose <code class="docutils literal notranslate"><span class="pre">Modifier</span> <span class="pre">Properties</span> <span class="pre">&gt;</span> <span class="pre">Add</span> <span class="pre">Modifier</span></code> in the properties area to bring up the dropdown menu. There are 4 categories of modifiers, <code class="docutils literal notranslate"><span class="pre">Modify</span></code>, <code class="docutils literal notranslate"><span class="pre">Generate</span></code>, <code class="docutils literal notranslate"><span class="pre">Deform</span></code>, and <code class="docutils literal notranslate"><span class="pre">Physics</span></code>, we will focus on the <code class="docutils literal notranslate"><span class="pre">Generate</span></code> type in this tutorial. <kbd>Left Mouse Click</kbd> on the modifier you want to add, then you can see the effect. One object can have multiple modifiers, and they will be applied from top to bottom. To change the order of the modifiers, hold <kbd>Left Mouse Button</kbd> on the top right corner of a modifier, then drag it up or down. If you want to delete a modifier, <kbd>Left Mouse Click</kbd> on the cross near the top right.</p>
+<div class="figure align-default">
+<img alt="../../_images/add_mod.png" src="../../_images/add_mod.png" />
+</div>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Modifiers apply before object transfomation, if the object has been trasformed (especially scaled), some modifiers may not behave as expected. To avoid that, ou can select an object and press <kbd>Ctrl + A</kbd> to bring up the <code class="docutils literal notranslate"><span class="pre">Apply</span></code> menu and apply object transformation to mesh data.</p>
+</div>
+</div>
+<div class="section" id="visibility">
+<h2>Visibility<a class="headerlink" href="#visibility" title="Permalink to this headline">#</a></h2>
+<p>On the right of the name of the modifier, there are icons (depending on the type of the modifier) that let you change how the modifier will affect the view. Try them out in both object and edit mode.</p>
+<div class="figure align-default">
+<img alt="../../_images/visibility.png" src="../../_images/visibility.png" />
+</div>
+</div>
+<div class="section" id="applying-a-modifier">
+<h2>Applying a modifier<a class="headerlink" href="#applying-a-modifier" title="Permalink to this headline">#</a></h2>
+<p>To make the effect of a modifier permanent(apply it to the mesh data), move the cursor on the modifier interface and press <kbd>Ctrl + A</kbd>,  or <kbd>Left Mouse Click</kbd> on the downward arrow to the left of the cross and use the menu to <code class="docutils literal notranslate"><span class="pre">Apply</span></code> the effect.</p>
+<div class="figure align-default">
+<img alt="../../_images/apply_mod.png" src="../../_images/apply_mod.png" />
+</div>
+</div>
+<div class="section" id="commonly-used-modifiers">
+<span id="modifier-common"></span><h2>Commonly used modifiers<a class="headerlink" href="#commonly-used-modifiers" title="Permalink to this headline">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Subdivision Surface</label><div class="sd-tab-content docutils">
+<p>The <strong>Subdivision Surface</strong> modifier(commonly known as “Subsurf”) is probably the one you are going to use the most. The default option, <code class="docutils literal notranslate"><span class="pre">Catmull-Clark</span></code> smooths out the mesh and increases the polygon count, and <code class="docutils literal notranslate"><span class="pre">Simple</span></code> only divides the faces (like <strong>Subdivide</strong> in edit mode).</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Since this modifier is used so often, Blender has shortcut for adding it by default: <kbd>Ctrl + 1</kbd>, <kbd>Ctrl + 2</kbd>… <kbd>Ctrl + 5</kbd> to add it with 1 to 5 level.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/subsurf.gif"><img alt="../../_images/subsurf.gif" src="../../_images/subsurf.gif" style="width: 100%;" /></a>
+</div>
+<p>Because a modifier does not change the mesh, you can easily adjust the shape.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/subsurf_edit.gif"><img alt="../../_images/subsurf_edit.gif" src="../../_images/subsurf_edit.gif" style="width: 100%;" /></a>
+</div>
+<p>To preserve sharp edges, you can bevel the edges, add support loops, or use <strong>Edge Crease</strong>. To bevel the edges, use the <strong>Bevel</strong> tool explained in the <a class="reference internal" href="mesh.html"><span class="doc std std-doc">Mesh Modeling</span></a> section or the <strong>Bevel</strong> modifier in the other tab (you need to move it on top of this modifier so it applies first). Support loops are edge loops close to the edge you want to keep sharp, use <strong>Loop Cut</strong> and <strong>Inset</strong> tools to add them. Last but not least, <strong>Edge Crease</strong> is a property of an edge, select the edge/edges you want to keep sharp and adjust <code class="docutils literal notranslate"><span class="pre">Crease</span></code>/<code class="docutils literal notranslate"><span class="pre">Mean</span> <span class="pre">Crease</span></code> in the sidebar.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/subsurf_sharp_edge.gif"><img alt="../../_images/subsurf_sharp_edge.gif" src="../../_images/subsurf_sharp_edge.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Bevel</label><div class="sd-tab-content docutils">
+<p>The <strong>Bevel</strong> modifier allows you to bevel all the edges or vertices (corners) of a mesh at once. By default it affects all edges, and you can adjust <code class="docutils literal notranslate"><span class="pre">Amount</span></code> and <code class="docutils literal notranslate"><span class="pre">Segements</span></code> to fit your needs. To bevel the corners, <kbd>Left Mouse Click</kbd> the <code class="docutils literal notranslate"><span class="pre">Vertices</span></code> tab on the top. If you find shading on the faces looks weird, try turning on <code class="docutils literal notranslate"><span class="pre">Shading</span> <span class="pre">&gt;</span> <span class="pre">Harden</span> <span class="pre">Normals</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/bevel_mod.gif"><img alt="../../_images/bevel_mod.gif" src="../../_images/bevel_mod.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Array</label><div class="sd-tab-content docutils">
+<p>The <strong>Array</strong> modifier makes copies of an object and arranges them in different ways. Adjust <code class="docutils literal notranslate"><span class="pre">Count</span></code> to change the number of copies and <code class="docutils literal notranslate"><span class="pre">Relative</span> <span class="pre">Offset</span> <span class="pre">&gt;</span> <span class="pre">Factor</span> <span class="pre">X/Y/Z</span></code> for the offsets on the three local axes.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/array_1.gif"><img alt="../../_images/array_1.gif" src="../../_images/array_1.gif" style="width: 100%;" /></a>
+</div>
+<p>To arrange the copies in more interesting ways, you can adjust <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">offset</span></code>. The location/rotation of the copies will be affected by the object specified in <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">offset</span> <span class="pre">&gt;</span> <span class="pre">object</span></code>.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>It is common to use an <strong>Empty</strong>, a type of object with no geometry, to control the effects. You can add one to your scene in the <code class="docutils literal notranslate"><span class="pre">Add</span></code> menu.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/array_obj.gif"><img alt="../../_images/array_obj.gif" src="../../_images/array_obj.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Boolean</label><div class="sd-tab-content docutils">
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Beware that this modifier is prone to creating bad topology, especially when the meshes get more complex.</p>
+</div>
+<p>The <strong>Boolean</strong> modifier is like logical operators in programming but for 3D meshes. Set the other object for the operation in <code class="docutils literal notranslate"><span class="pre">Object</span></code>, and choose <code class="docutils literal notranslate"><span class="pre">Intersect</span></code>, <code class="docutils literal notranslate"><span class="pre">Union</span></code>, or <code class="docutils literal notranslate"><span class="pre">Difference</span></code> for <strong>AND</strong>, <strong>OR</strong>, and <strong>NOT</strong> effect.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/boolean.gif"><img alt="../../_images/boolean.gif" src="../../_images/boolean.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Mirror</label><div class="sd-tab-content docutils">
+<p>If you are modeling something symmetrical, the <strong>Mirror</strong> modifier can save you a lot of work. You can control on which local axes this effect will be applied by <code class="docutils literal notranslate"><span class="pre">Axis</span> <span class="pre">X/Y/Z</span></code>, and they are not mutually exclusive.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/mirror.gif"><img alt="../../_images/mirror.gif" src="../../_images/mirror.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Solidify</label><div class="sd-tab-content docutils">
+<p>The <strong>Solidify</strong> modifier adds depth to all faces. Change <code class="docutils literal notranslate"><span class="pre">Thickness</span></code> to tweak the amount of depth added and <code class="docutils literal notranslate"><span class="pre">Offset</span></code> to influence on which side of the face this effect applies. Ticking <code class="docutils literal notranslate"><span class="pre">Even</span> <span class="pre">Thickness</span></code> may help to make the resulting mesh look better.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Offset</span></code> is relative to face normals.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/solidify.gif"><img alt="../../_images/solidify.gif" src="../../_images/solidify.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Screw</label><div class="sd-tab-content docutils">
+<p>The <strong>Screw</strong> modifier takes an object as a profile and creates a helix or rotationally symmetric shape, depending on the offset.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/screw.gif"><img alt="../../_images/screw.gif" src="../../_images/screw.gif" style="width: 100%;" /></a>
+</div>
+<p>It also works on curve objects.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/screw_curve.gif"><img alt="../../_images/screw_curve.gif" src="../../_images/screw_curve.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./markdown\modeling"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="curve.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Curve Modeling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="animation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Animation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#adding-modifier">Adding modifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visibility">Visibility</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-a-modifier">Applying a modifier</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commonly-used-modifiers">Commonly used modifiers</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Graduate Program in Data Science, Tohoku University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

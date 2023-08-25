@@ -1,0 +1,50 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: markdown/intro/intro
+chapters:
+  - file: markdown/UI/UI
+    sections:
+      - file: markdown/UI/elements
+      - file: markdown/UI/navigation
+  - file: markdown/modeling/modeling
+    sections:
+      - file: markdown/modeling/object
+      - file: markdown/modeling/mesh
+      - file: markdown/modeling/curve
+      - file: markdown/modeling/modifier
+      - file: markdown/modeling/animation
+      - file: markdown/modeling/constraint
+      - file: markdown/modeling/modeling_project
+  - file: markdown/material/material
+    sections:
+      - file: markdown/material/principle
+      - file: markdown/material/PBR
+      - file: markdown/material/node_tree
+      - file: markdown/material/material_project
+  - file: markdown/render/render
+    sections:
+      - file: markdown/render/engine
+      - file: markdown/render/lighting
+      - file: markdown/render/camera
+      - file: markdown/render/compositing
+      - file: markdown/render/rendering
+      - file: markdown/render/render_project
+  - file: markdown/geom_node/geom_node
+    sections:
+      - file: markdown/geom_node/node_tree
+      - file: markdown/geom_node/more_nodes
+      - file: markdown/geom_node/geom_node_project
+  - file: markdown/scripting/scripting
+    sections:
+      - file: markdown/scripting/tooltip
+      - file: markdown/scripting/py_script
+      - file: markdown/scripting/nodes
+      - file: markdown/scripting/scripting_project
+  - file: markdown/extras/extra
+    sections:
+      - file: markdown/extras/sculpting
+      - file: markdown/extras/physics_particles
+      - file: markdown/extras/rigging
+      - file: markdown/extras/more_addons
