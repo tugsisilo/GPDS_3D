@@ -1,0 +1,892 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>More about Shader Nodes &#8212; 3D Graphics Basics with Blender</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown/material/node_tree';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Projects" href="material_project.html" />
+    <link rel="prev" title="Physically Based Rendering (PBR)" href="PBR.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gp_logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/gp_logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    3D Graphics Basics with Blender
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../UI/UI.html">UI</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../UI/elements.html">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../UI/navigation.html">Navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modeling/modeling.html">Modeling</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/object.html">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/mesh.html">Mesh Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/curve.html">Curve Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/modifier.html">Modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/animation.html">Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/constraint.html">Constraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/modeling_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="material.html">Material</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="principle.html">Material Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="PBR.html">Physically Based Rendering (PBR)</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">More about Shader Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="material_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../render/render.html">Render</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../render/engine.html">Rendering engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/lighting.html">Lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/camera.html">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/compositing.html">Compositing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/rendering.html">Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/render_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geom_node/geom_node.html">Geometry Node</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/node_tree.html">Geometry Node Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/more_nodes.html">More about Geometry Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/geom_node_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scripting/scripting.html">Scripting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/tooltip.html">Scripting Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/py_script.html">API Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/nodes.html">Node Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/scripting_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras/extra.html">Extras</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras/sculpting.html">Sculpting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/physics_particles.html">Physics Simulation and Particle System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/rigging.html">Rigging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/more_addons.html">More about Add-ons</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/markdown/material/node_tree.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>More about Shader Nodes</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#socket-types">Socket Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layout">Layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group">Group</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-add-ons">Use Add-ons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-nodes">More Nodes</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="more-about-shader-nodes">
+<span id="shader-node-tree"></span><h1>More about Shader Nodes<a class="headerlink" href="#more-about-shader-nodes" title="Permalink to this headline">#</a></h1>
+<p>The last section explained the standard makeup of a realistic-looking material, but it is far from the only way. You probably noticed that there are a lot more shader nodes than the ones we used, and with their power combined, the only limit is your imagination.</p>
+<div class="section" id="socket-types">
+<h2>Socket Types<a class="headerlink" href="#socket-types" title="Permalink to this headline">#</a></h2>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The <strong>Fac(facor)</strong> socket outputs/expects input float values between 0 and 1.</p>
+</div>
+<p>The color of the sockets on the nodes indicates the type of data, here are the common ones:</p>
+<ul class="simple">
+<li><p><span style="color:#0FFF50">Light green</span>: Shader</p></li>
+<li><p><span style="color:#008000">Dark green</span> : Integer</p></li>
+<li><p><span style="color:#808080">Grey</span>: Float</p></li>
+<li><p><span style="color:#FFFF00">Yellow</span>: Color</p></li>
+<li><p><span style="color:#FFC0CB">Pink</span>: Boolean</p></li>
+<li><p><span style="color:#BF40BF">Purple</span>: Vector</p></li>
+<li><p><span style="color:#FFA500">Orange</span>: Object</p></li>
+</ul>
+<p>Some types can be automatically converted to another when the sockets are connected, and the noodle will have a gradient between the two colors. When the conversion is not possible, the noodle will appear red.</p>
+</div>
+<div class="section" id="layout">
+<h2>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">#</a></h2>
+<p>When you have dozens of nodes in your node tree, it is important to keep them well organized. The <strong>Frame</strong> is a useful tool to remind yourself what all these nodes do. To make a new frame, select the nodes you want to be part of it and press <kbd>Ctrl + J</kbd> or <kbd>Right Mouse Click</kbd> to bring up <code class="docutils literal notranslate"><span class="pre">Node</span> <span class="pre">Context</span> <span class="pre">Menu</span></code> and choose <code class="docutils literal notranslate"><span class="pre">Join</span> <span class="pre">in</span> <span class="pre">New</span> <span class="pre">Frame</span></code>. You can give the frame a <code class="docutils literal notranslate"><span class="pre">Label</span></code> via <code class="docutils literal notranslate"><span class="pre">Node</span> <span class="pre">&gt;</span> <span class="pre">label</span></code> in the <code class="docutils literal notranslate"><span class="pre">Sidebar</span></code>. To add new nodes to the frame, simply drag them into the frame; to remove, press <kbd>Alt + P</kbd> or choose <code class="docutils literal notranslate"><span class="pre">Remove</span> <span class="pre">from</span> <span class="pre">Frame</span></code> in the <code class="docutils literal notranslate"><span class="pre">Node</span> <span class="pre">Context</span> <span class="pre">Menu</span></code>.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can give label to nodes in the same way.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_frame.gif"><img alt="../../_images/node_frame.gif" src="../../_images/node_frame.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<div class="section" id="group">
+<h2>Group<a class="headerlink" href="#group" title="Permalink to this headline">#</a></h2>
+<p>In programming, we write custom functions to avoid code repetition. The <strong>Node Groups</strong> can help us with that problem in node trees. Select the nodes you want to group up, then press <kbd>Ctrl + G</kbd> or <kbd>Right Mouse Click</kbd> to bring up <code class="docutils literal notranslate"><span class="pre">Node</span> <span class="pre">Context</span> <span class="pre">Menu</span></code> and choose <code class="docutils literal notranslate"><span class="pre">Make</span> <span class="pre">Group</span></code>. Inside the node group, you can link input sockets to the hollowed circle on the <code class="docutils literal notranslate"><span class="pre">Group</span> <span class="pre">Input</span></code> to add new inputs to the Group, or output ones to the <code class="docutils literal notranslate"><span class="pre">Group</span> <span class="pre">Output</span></code> to make new outputs. To change the names and types of the sockets, open the sidebar and switch to the <code class="docutils literal notranslate"><span class="pre">Group</span></code> tab.</p>
+<p>Press <kbd>Tab</kbd> to return to the node tree, and you can <kbd>Left Mouse Click</kbd> the symbol on its top right or select and press <kbd>Tab</kbd> to get inside the node group again. Linking a node group is the same as any regular node. After you have made a node group, you can add a copy through <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">&gt;</span> <span class="pre">Group</span> <span class="pre">&gt;</span> <span class="pre">{Group</span> <span class="pre">Name}</span></code>.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Editing a node group will change all its instances because they share the underlying data. To avoid that behavior, <kbd>Left Mouse Click</kbd> the number to the right of the name of the node group and it will creat a copy of the original group in the data.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_group.gif"><img alt="../../_images/node_group.gif" src="../../_images/node_group.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<div class="section" id="use-add-ons">
+<h2>Use Add-ons<a class="headerlink" href="#use-add-ons" title="Permalink to this headline">#</a></h2>
+<p>One advantage of Blender is that it has great community support, and you can find all kinds of <strong>Add-ons</strong> to enhance its functionality. When it comes to nodes, the <strong>Node Wrangler</strong> is a very popular one and you already have it in your installation. This add-on provides various tools to make node editing easier. Open <code class="docutils literal notranslate"><span class="pre">Blender</span> <span class="pre">preferences</span></code> window using <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">&gt;</span> <span class="pre">Preferences...</span></code>, in the <code class="docutils literal notranslate"><span class="pre">Add-ons</span></code> tab, you can find the add-on in the list or search it by name, then tick the box to enable.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>One useful functionality of this add-on is to connect the output of a node to the <code class="docutils literal notranslate"><span class="pre">Surface</span></code> socket of the <code class="docutils literal notranslate"><span class="pre">Material</span> <span class="pre">Output</span></code> node by  <kbd>Ctrl + Shift + Left Mouse Click</kbd>, it allows you to quickly check how the output of a node looks.</p></li>
+<li><p>Apart from the ones that come with Blender, you can find much more free and paid add-ons online.</p></li>
+</ul>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/addon.png" src="../../_images/addon.png" />
+</div>
+</div>
+<div class="section" id="more-nodes">
+<h2>More Nodes<a class="headerlink" href="#more-nodes" title="Permalink to this headline">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Input</label><div class="sd-tab-content docutils">
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Ambient Occlusion</div>
+<p class="sd-card-text">If you are a PC gamer, the word <strong>Ambient Occlusion</strong> may sound familiar. Ambient occlusion is a technique of simulating shadows in the nooks and crannies which are often not calculated in shadow maps.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_ao.png"><img alt="../../_images/node_ao.png" src="../../_images/node_ao.png" style="width: 100%;" /></a>
+</div>
+<p class="sd-card-text">You can use it for that purpose, or use the <code class="docutils literal notranslate"><span class="pre">AO</span></code> output as a mask for other effects.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_ao_ex.png"><img alt="../../_images/node_ao_ex.png" src="../../_images/node_ao_ex.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Frensnel</div>
+<p class="sd-card-text">The observed reflectiveness of a material is dependent on the viewing angle, and it is called the <strong>Frensnel</strong> effect. The Fresnel node gives you a factor indicating which part of the material should me more reflective.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_fensnel.png"><img alt="../../_images/node_fensnel.png" src="../../_images/node_fensnel.png" style="width: 100%;" /></a>
+</div>
+<p class="sd-card-text">It is often used along with <strong>Mix Shader</strong>. This example shows a mixture of a matte blue material and a glossy red one.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_fensnel_mix.png"><img alt="../../_images/node_fensnel_mix.png" src="../../_images/node_fensnel_mix.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<!-- 
+````{card} Light Path
+
+```{figure} ../../assets/material/pbsdf_subsurface.png
+
+```
+````
+ -->
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+UV Map</div>
+<p class="sd-card-text">Yes, you can use the <code class="docutils literal notranslate"><span class="pre">UV</span></code> output of the texture coordinate node, but if the object has multiple UV maps, it only use the active one. The <strong>UV Map</strong> node let you choose which UV map you want to use.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_UV.gif"><img alt="../../_images/node_UV.gif" src="../../_images/node_UV.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Value</div>
+<p class="sd-card-text">The <strong>Value</strong> node is very simple: it stores and outputs 1 value. It is useful when you want to link multiple input values together.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_value.gif"><img alt="../../_images/node_value.gif" src="../../_images/node_value.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Output</label><div class="sd-tab-content docutils">
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Material Output</div>
+<p class="sd-card-text">Every material needs a <strong>Material Output</strong> node to work. The <code class="docutils literal notranslate"><span class="pre">Surface</span></code> and the <code class="docutils literal notranslate"><span class="pre">Volume</span></code> socket are for their respective shaders, and <code class="docutils literal notranslate"><span class="pre">Displacement</span></code> is for the displacement effect introduced in the last section. It also let you make different outputs for <strong>EEVEE</strong> and <strong>Cycles</strong> render engines.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_mat_output.png"><img alt="../../_images/node_mat_output.png" src="../../_images/node_mat_output.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Shader</label><div class="sd-tab-content docutils">
+<p>Most of the nodes here can be seen as components of the principled BSDF shader, and they give you more freedom to create new materials.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Mix Shader</div>
+<p class="sd-card-text">Real-life materials are usually not uniform, and different part has different properties. The <strong>Mix Shader</strong> node allows you to combine two shaders together with their arrangement defined by the <code class="docutils literal notranslate"><span class="pre">Fac</span></code> input. With the help of Node Wrangler, this node can also be created by holding <kbd>Ctrl + Shift + Right Mouse Button</kbd> and dragging the cursor from one shader to another.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_mix_shader.png"><img alt="../../_images/node_mix_shader.png" src="../../_images/node_mix_shader.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Volume Absorption</div>
+<p class="sd-card-text">To create colored translucent material like tinted glass, you will need the <strong>Volume Absorption</strong> node. Be sure to connect its output to the <code class="docutils literal notranslate"><span class="pre">Volume</span></code> input socket of the <code class="docutils literal notranslate"><span class="pre">Material</span> <span class="pre">Output</span></code> node.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Switch to <strong>Cycles</strong> render engine for better results.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_vol_absorb.png"><img alt="../../_images/node_vol_absorb.png" src="../../_images/node_vol_absorb.png" style="width: 100%;" /></a>
+</div>
+<p class="sd-card-text">It is often combined with a surface material.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_vol_absorb_combo.png"><img alt="../../_images/node_vol_absorb_combo.png" src="../../_images/node_vol_absorb_combo.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Volume Scatter</div>
+<p class="sd-card-text">Adding some fog to your scene can make it look less empty, and the <strong>Volume Scatter</strong> node helps you to create such material. In this example, such material is applied to a cube, and another object with an emissive material is put insde the cube.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Switch to <strong>Cycles</strong> render engine for better results.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_vol_scatter.png"><img alt="../../_images/node_vol_scatter.png" src="../../_images/node_vol_scatter.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Texture</label><div class="sd-tab-content docutils">
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Brick Texture</div>
+<p class="sd-card-text">The <strong>Brick Texture</strong> makes procedually generated brick wall textures, or other tiled textures if you use it in more creative ways. The <code class="docutils literal notranslate"><span class="pre">Color</span></code> socket outputs the texture, and <code class="docutils literal notranslate"><span class="pre">Fac</span></code>gives you a factor where the brick parts are 0s and mortar 1s.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_brick_tex.png"><img alt="../../_images/node_brick_tex.png" src="../../_images/node_brick_tex.png" style="width: 100%;" /></a>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_brick_fac.png"><img alt="../../_images/node_brick_fac.png" src="../../_images/node_brick_fac.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Gradient Texture</div>
+<p class="sd-card-text"><strong>Gradient Texture</strong> can help you make a blend or fade in/out effect.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_grad_tex.gif"><img alt="../../_images/node_grad_tex.gif" src="../../_images/node_grad_tex.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Magic Texture</div>
+<p class="sd-card-text">The <strong>Magic Texture</strong> may look weird, but it is useful for generating repeating patterns. If you look at its R(ed)/G(reen)/B(lue) channel separately using the <strong>Separate Color</strong> node, the simpler underlying patterns will reveal themselves.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_magic_tex.gif"><img alt="../../_images/node_magic_tex.gif" src="../../_images/node_magic_tex.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Musgrave Texture</div>
+<p class="sd-card-text">The <strong>Musgrave Texture</strong> is based on <strong>Perlin noise</strong>, and it gives you more control compared to the <strong>Noise Texture</strong> node.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_musgrave.png"><img alt="../../_images/node_musgrave.png" src="../../_images/node_musgrave.png" style="width: 100%;" /></a>
+</div>
+<p class="sd-card-text">It is good at mimicking organic surface and creating terrain. Unlike the more common <code class="docutils literal notranslate"><span class="pre">Fac</span></code> output, the <code class="docutils literal notranslate"><span class="pre">Height</span></code> output is not limited to the range of 0 to 1, and you can see the effect when using it for <code class="docutils literal notranslate"><span class="pre">Displacement</span></code>. When the number of dimension is set to <code class="docutils literal notranslate"><span class="pre">4D</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">W</span></code> as a random seed or for animation.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_musgrave_terrain.png"><img alt="../../_images/node_musgrave_terrain.png" src="../../_images/node_musgrave_terrain.png" style="width: 100%;" /></a>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_musgrave_anim.gif"><img alt="../../_images/node_musgrave_anim.gif" src="../../_images/node_musgrave_anim.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Noise Texture</div>
+<p class="sd-card-text"><strong>Noise Texture</strong> generates a pattern based on <strong>Perlin noise</strong>. The <code class="docutils literal notranslate"><span class="pre">Fac</span></code> output pattern is the same as the red channel in the <code class="docutils literal notranslate"><span class="pre">Color</span></code> output.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_noise_tex.png"><img alt="../../_images/node_noise_tex.png" src="../../_images/node_noise_tex.png" style="width: 100%;" /></a>
+</div>
+<p class="sd-card-text">You can use it to add some flavor to your material, or combine it with other textures to create interesting effets.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_noise_wave.png"><img alt="../../_images/node_noise_wave.png" src="../../_images/node_noise_wave.png" style="width: 100%;" /></a>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_noise_rough.png"><img alt="../../_images/node_noise_rough.png" src="../../_images/node_noise_rough.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Voronoi Texture</div>
+<p class="sd-card-text">The <strong>Voronoi Texture</strong> is based on <strong>Worley noise</strong>, which is generated by evaluating distance to random points in space. Changing the defination of distance gives you different outputs. When the number of dimension is set to <code class="docutils literal notranslate"><span class="pre">4D</span></code>, you can use <code class="docutils literal notranslate"><span class="pre">W</span></code> as a random seed or for animation.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_voronoi_tex.png"><img alt="../../_images/node_voronoi_tex.png" src="../../_images/node_voronoi_tex.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Wave Texture</div>
+<p class="sd-card-text">The <strong>Wave Texture</strong> gives you bands and rings. Putting it on a 3D object will give you a better understanding on how it works.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_wave_tex.png"><img alt="../../_images/node_wave_tex.png" src="../../_images/node_wave_tex.png" style="width: 100%;" /></a>
+</div>
+<p class="sd-card-text">Combine it with other texture nodes to create interesting effects.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_wave_anim.gif"><img alt="../../_images/node_wave_anim.gif" src="../../_images/node_wave_anim.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Vector</label><div class="sd-tab-content docutils">
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Bump</div>
+<p class="sd-card-text">The <strong>Bump</strong> node takes a <code class="docutils literal notranslate"><span class="pre">Height(float)</span></code> input and outputs a normal map.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_bump.png"><img alt="../../_images/node_bump.png" src="../../_images/node_bump.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Color</label><div class="sd-tab-content docutils">
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Mix Color</div>
+<p class="sd-card-text">Not to be confused with the <strong>Mix Shader</strong> node in <code class="docutils literal notranslate"><span class="pre">Shader</span></code>, the <strong>Mix Color</strong> node offers various ways to mix two color inputs depeneding on the <code class="docutils literal notranslate"><span class="pre">Blend</span> <span class="pre">Mode</span></code>. With the help of Node Wrangler, this node can also be created by holding <kbd>Ctrl + Shift + Right Mouse Button</kbd> and dragging the cursor from one node with <code class="docutils literal notranslate"><span class="pre">Color</span></code> output socket to another.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">The <strong>Mix</strong> node in <code class="docutils literal notranslate"><span class="pre">Converter</span></code> is actually the same as this node.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_mix_color.png"><img alt="../../_images/node_mix_color.png" src="../../_images/node_mix_color.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Converter</label><div class="sd-tab-content docutils">
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Blackbody</div>
+<p class="sd-card-text">The <strong>Blackbody</strong> node converts <code class="docutils literal notranslate"><span class="pre">Temperature(float)</span></code> to a <code class="docutils literal notranslate"><span class="pre">Color</span></code> based on blackbody radiation.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_blackbody.gif"><img alt="../../_images/node_blackbody.gif" src="../../_images/node_blackbody.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Color Ramp</div>
+<p class="sd-card-text"><strong>Color Ramp</strong> maps values to colors. You can <kbd>Left Mouse Click</kbd> <code class="docutils literal notranslate"><span class="pre">+</span></code> to add a new <code class="docutils literal notranslate"><span class="pre">Color</span> <span class="pre">Stop</span></code> and <code class="docutils literal notranslate"><span class="pre">-</span></code> to delete. To change the color, select a <code class="docutils literal notranslate"><span class="pre">Color</span> <span class="pre">Stop</span></code> then <kbd>Left Mouse Click</kbd> the color bar.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">You can use this node to map values too.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_coloramp.png"><img alt="../../_images/node_coloramp.png" src="../../_images/node_coloramp.png" style="width: 100%;" /></a>
+</div>
+<p class="sd-card-text">It can be used as a simple tool to adjust contrast.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_coloramp_contst.gif"><img alt="../../_images/node_coloramp_contst.gif" src="../../_images/node_coloramp_contst.gif" style="width: 100%;" /></a>
+</div>
+<p class="sd-card-text">You can also use it along with the <strong>Shader To RGB</strong> node to get a cel/toon shading effect.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_coloramp_toon.png"><img alt="../../_images/node_coloramp_toon.png" src="../../_images/node_coloramp_toon.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Map Range</div>
+<p class="sd-card-text">The <strong>Map Range</strong> node map values from one range to another.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_map_range.gif"><img alt="../../_images/node_map_range.gif" src="../../_images/node_map_range.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Separate/Combine XYZ</div>
+<p class="sd-card-text">The <strong>Separate XYZ</strong> and <strong>Combine XYZ</strong> nodes allow you to separate/combine a vector into/from 3 float values. They are very useful when you are trying to read/manipulate coordinates on one axis.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_sep_comb_xyz.gif"><img alt="../../_images/node_sep_comb_xyz.gif" src="../../_images/node_sep_comb_xyz.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Shader To RGB (EEVEE Only)</div>
+<p class="sd-card-text">The <strong>Shader To RGB</strong> node is used for stylized rendering, it allows you to manipulate the output of a shader. See <strong>Color Ramp</strong> for the example.</p>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Math/Vector Math</div>
+<p class="sd-card-text">The <strong>Math</strong> and <strong>Vector Math</strong> nodes allow you to perform mathmatical operations. You can use them to adjust values, draw shapes, etc.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_math.png"><img alt="../../_images/node_math.png" src="../../_images/node_math.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Wavelength</div>
+<p class="sd-card-text">The <strong>Wavelength</strong> node convert a wavelength (float) to a color, it will produce pure black if the value is out of the range of visible light.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/node_wavelength.gif"><img alt="../../_images/node_wavelength.gif" src="../../_images/node_wavelength.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./markdown\material"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="PBR.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Physically Based Rendering (PBR)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="material_project.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Projects</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#socket-types">Socket Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#layout">Layout</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#group">Group</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-add-ons">Use Add-ons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#more-nodes">More Nodes</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Graduate Program in Data Science, Tohoku University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

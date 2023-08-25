@@ -1,0 +1,545 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rigging &#8212; 3D Graphics Basics with Blender</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown/extras/rigging';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="More about Add-ons" href="more_addons.html" />
+    <link rel="prev" title="Physics Simulation and Particle System" href="physics_particles.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gp_logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/gp_logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    3D Graphics Basics with Blender
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../UI/UI.html">UI</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../UI/elements.html">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../UI/navigation.html">Navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modeling/modeling.html">Modeling</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/object.html">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/mesh.html">Mesh Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/curve.html">Curve Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/modifier.html">Modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/animation.html">Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/constraint.html">Constraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/modeling_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../material/material.html">Material</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../material/principle.html">Material Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/PBR.html">Physically Based Rendering (PBR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/node_tree.html">More about Shader Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/material_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../render/render.html">Render</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../render/engine.html">Rendering engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/lighting.html">Lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/camera.html">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/compositing.html">Compositing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/rendering.html">Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/render_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geom_node/geom_node.html">Geometry Node</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/node_tree.html">Geometry Node Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/more_nodes.html">More about Geometry Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/geom_node_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scripting/scripting.html">Scripting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/tooltip.html">Scripting Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/py_script.html">API Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/nodes.html">Node Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/scripting_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="extra.html">Extras</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="sculpting.html">Sculpting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="physics_particles.html">Physics Simulation and Particle System</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Rigging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="more_addons.html">More about Add-ons</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/markdown/extras/rigging.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Rigging</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#armature">Armature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weight-painting">Weight Painting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-and-inverse-kinematics">Forward and Inverse Kinematics</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="rigging">
+<span id="id1"></span><h1>Rigging<a class="headerlink" href="#rigging" title="Permalink to this headline">#</a></h1>
+<p>For more complex meshes, say a model of a humanoid character, making animations by keyframing it directly would be quite a chore. <strong>Rigging</strong> is a way to make the process simpler by adding controls to objects.</p>
+<div class="section" id="armature">
+<h2>Armature<a class="headerlink" href="#armature" title="Permalink to this headline">#</a></h2>
+<p>The type of object used as control is called <strong>Armature</strong>, which usually resembles an animal skeleton. To add an armature, press <kbd>Shift + A</kbd> or <kbd>Left Mouse Click</kbd> <code class="docutils literal notranslate"><span class="pre">Add</span></code> on the header to open the <code class="docutils literal notranslate"><span class="pre">Add</span></code> menu, and choose <code class="docutils literal notranslate"><span class="pre">Armature</span></code>. The armature you just created contains a single <strong>Bone</strong>, and it has a head (the ball at the bottom), a body (the middle part), and a tail (the ball at the top). You can edit the bone in edit mode, the head and tail can be moved independently, and you can press <kbd>E</kbd> to extrude a new bone out of it. The new bone made this way will be parented to the original bone.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Keyframe the armature to make animations.</p>
+</div>
+<p>To change the shape of a mesh with the armature, select the mesh object and the armature, make sure the armature is the active object, then press <kbd>Crtl + P</kbd> and choose <code class="docutils literal notranslate"><span class="pre">Armature</span> <span class="pre">Deform:</span> <span class="pre">With</span> <span class="pre">Automatic</span> <span class="pre">Weights</span></code>. This not only set the armature as the parent of the mesh object, but it also adds an armature modifier to the object and automatically makes vertex groups for the influence of the bones. Now you can select the armature and switch the viewport to <strong>Pose Mode</strong> and see how the armature deforms the mesh.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/rigging.gif"><img alt="../../_images/rigging.gif" src="../../_images/rigging.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<div class="section" id="weight-painting">
+<h2>Weight Painting<a class="headerlink" href="#weight-painting" title="Permalink to this headline">#</a></h2>
+<p>How the armature affects the mesh is determined by <strong>Vertex Weights</strong>, and you can edit the weights in <code class="docutils literal notranslate"><span class="pre">Weight</span> <span class="pre">Paint</span></code> object interaction mode. Go to the <code class="docutils literal notranslate"><span class="pre">Data</span></code> panel in the properties area, and under <code class="docutils literal notranslate"><span class="pre">Vertex</span> <span class="pre">Group</span></code> select one associated with an armature bone. The weight values are displayed in colors, by default 1 is red and 0 is blue, and you can use your mouse or stylus to change them by painting directly on the mesh.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">Vertex</span> <span class="pre">Groups</span></code> here are created when the mesh object is parented to the armature using the <code class="docutils literal notranslate"><span class="pre">With</span> <span class="pre">Automatic</span> <span class="pre">Weights</span></code> option.</p></li>
+<li><p>In edit mode, select a vertex and you can check and edit its weight values in <code class="docutils literal notranslate"><span class="pre">Item</span> <span class="pre">&gt;</span> <span class="pre">Vertex</span> <span class="pre">Weights</span></code> on the sidebar.</p></li>
+</ul>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/weight_painting.gif"><img alt="../../_images/weight_painting.gif" src="../../_images/weight_painting.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<div class="section" id="forward-and-inverse-kinematics">
+<h2>Forward and Inverse Kinematics<a class="headerlink" href="#forward-and-inverse-kinematics" title="Permalink to this headline">#</a></h2>
+<p>There are two ways to manipulate the armature, <strong>Forward Kinematics(FK)</strong> and <strong>Inverse Kinematics(IK)</strong>. Forward kinematics is relatively simple, you move one bone at a time, usually from the parents to the children.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/FK.gif"><img alt="../../_images/FK.gif" src="../../_images/FK.gif" style="width: 100%;" /></a>
+</div>
+<p>Inverse kinematics makes the armature bend to fit the position of the target. To make it happen, extrude the last bone in the armature in edit mode and uncheck <code class="docutils literal notranslate"><span class="pre">Deform</span></code> and clear its parent on the <code class="docutils literal notranslate"><span class="pre">Bone</span></code> tab in the properties area to make a control bone. Then select the last bone and add an <code class="docutils literal notranslate"><span class="pre">Inverse</span> <span class="pre">Kinematics</span></code> constraint in the <code class="docutils literal notranslate"><span class="pre">Bone</span> <span class="pre">Constraints</span></code> tab. Set the control bone as the target and the setup should work. You can change <code class="docutils literal notranslate"><span class="pre">Chain</span> <span class="pre">Length</span></code> to tweak the number of affected bones (0 means all bones).</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>The target object does not have to be a bone.</p></li>
+<li><p>Bone constraints applies to a single bone, and they are overall very similar to object constraints.</p></li>
+</ul>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/IK.gif"><img alt="../../_images/IK.gif" src="../../_images/IK.gif" style="width: 100%;" /></a>
+</div>
+<p>To control the direction the armature bends, you can add a <code class="docutils literal notranslate"><span class="pre">Pole</span></code> to the Inverse kinematics setup. Make another control bone, which serves as the target for the pole, then in the <code class="docutils literal notranslate"><span class="pre">Inverse</span> <span class="pre">Kinematics</span></code> bone constraint, set it as the target of the pole, then adjust <code class="docutils literal notranslate"><span class="pre">Pole</span> <span class="pre">Angle</span></code> to make the armature bend to the correct direction.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/IK_pole.gif"><img alt="../../_images/IK_pole.gif" src="../../_images/IK_pole.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./markdown\extras"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="physics_particles.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Physics Simulation and Particle System</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="more_addons.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">More about Add-ons</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#armature">Armature</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#weight-painting">Weight Painting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#forward-and-inverse-kinematics">Forward and Inverse Kinematics</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Graduate Program in Data Science, Tohoku University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

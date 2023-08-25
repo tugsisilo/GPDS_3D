@@ -1,0 +1,1497 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects &#8212; 3D Graphics Basics with Blender</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown/scripting/scripting_project';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Extras" href="../extras/extra.html" />
+    <link rel="prev" title="Node Scripting" href="nodes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gp_logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/gp_logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    3D Graphics Basics with Blender
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../UI/UI.html">UI</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../UI/elements.html">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../UI/navigation.html">Navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../modeling/modeling.html">Modeling</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/object.html">Object</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/mesh.html">Mesh Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/curve.html">Curve Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/modifier.html">Modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/animation.html">Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/constraint.html">Constraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../modeling/modeling_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../material/material.html">Material</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../material/principle.html">Material Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/PBR.html">Physically Based Rendering (PBR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/node_tree.html">More about Shader Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/material_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../render/render.html">Render</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../render/engine.html">Rendering engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/lighting.html">Lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/camera.html">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/compositing.html">Compositing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/rendering.html">Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/render_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geom_node/geom_node.html">Geometry Node</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/node_tree.html">Geometry Node Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/more_nodes.html">More about Geometry Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/geom_node_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="scripting.html">Scripting</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="tooltip.html">Scripting Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="py_script.html">API Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nodes.html">Node Scripting</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras/extra.html">Extras</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras/sculpting.html">Sculpting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/physics_particles.html">Physics Simulation and Particle System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/rigging.html">Rigging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/more_addons.html">More about Add-ons</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/markdown/scripting/scripting_project.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Projects</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="projects">
+<span id="scripting-proj"></span><h1>Projects<a class="headerlink" href="#projects" title="Permalink to this headline">#</a></h1>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Failing Stars</label><div class="sd-tab-content docutils">
+<p>First, import the necessary libraries and define the convenience variables, then clean up the scene.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">addon_utils</span>
+<span class="kn">from</span> <span class="nn">mathutils</span> <span class="kn">import</span> <span class="n">Vector</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span>
+
+<span class="c1"># clean up the scene</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;SELECT&quot;</span><span class="p">)</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">outliner</span><span class="o">.</span><span class="n">orphans_purge</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Set the end frame and change the background color to black.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># set up the scene</span>
+<span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">frame_end</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="c1"># change background color to black</span>
+<span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">world</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;Background&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;Color&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Make a curve that defines the path of the stars.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make the curve path</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">curve</span><span class="o">.</span><span class="n">primitive_bezier_curve_add</span><span class="p">()</span>
+<span class="n">c_path</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">active_object</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;curve_path&quot;</span>
+<span class="c1"># edit the curve</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">splines</span><span class="o">.</span><span class="n">active</span><span class="o">.</span><span class="n">bezier_points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">co</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">splines</span><span class="o">.</span><span class="n">active</span><span class="o">.</span><span class="n">bezier_points</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">co</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">)</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">splines</span><span class="o">.</span><span class="n">active</span><span class="o">.</span><span class="n">bezier_points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">handle_left</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">7.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">splines</span><span class="o">.</span><span class="n">active</span><span class="o">.</span><span class="n">bezier_points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">handle_right</span> <span class="o">=</span> <span class="p">(</span><span class="mf">7.5</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">splines</span><span class="o">.</span><span class="n">active</span><span class="o">.</span><span class="n">bezier_points</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">handle_left</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_sf_path.png"><img alt="../../_images/proj_sf_path.png" src="../../_images/proj_sf_path.png" style="width: 100%;" /></a>
+</div>
+<p>Enable the <strong>Extra Object</strong> add-on, create a star-shaped mesh object and rotate it to face sideways.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># enable extra object add-on</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">addon_utils</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="s2">&quot;add_mesh_extra_objects&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">]:</span>
+    <span class="n">addon_utils</span><span class="o">.</span><span class="n">enable</span><span class="p">(</span><span class="s2">&quot;add_mesh_extra_objects&quot;</span><span class="p">)</span>
+<span class="c1"># make a star object</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_star_add</span><span class="p">()</span>
+<span class="n">mesh_star</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">active_object</span>
+<span class="c1"># rotate it</span>
+<span class="n">mesh_star</span><span class="o">.</span><span class="n">rotation_euler</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Add a <code class="docutils literal notranslate"><span class="pre">Subdivision</span> <span class="pre">Surface</span></code> modifier and smooth-shade the star.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add subdivision surface modifier</span>
+<span class="n">mesh_star</span><span class="o">.</span><span class="n">modifiers</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;subsurf&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;SUBSURF&quot;</span><span class="p">)</span>
+<span class="n">mesh_star</span><span class="o">.</span><span class="n">modifiers</span><span class="p">[</span><span class="s2">&quot;subsurf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">levels</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">mesh_star</span><span class="o">.</span><span class="n">modifiers</span><span class="p">[</span><span class="s2">&quot;subsurf&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">render_levels</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="c1"># set shade smooth</span>
+<span class="k">for</span> <span class="n">face</span> <span class="ow">in</span> <span class="n">mesh_star</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">polygons</span><span class="p">:</span>
+    <span class="n">face</span><span class="o">.</span><span class="n">use_smooth</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<p>To make the star move along the path, add a <strong>Follow Path</strong> constraint then animate the path and adjust the interpolation.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can add a driver to <code class="docutils literal notranslate"><span class="pre">c_path.data.eval_time</span></code> instead.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add follow path constraint</span>
+<span class="n">mesh_star</span><span class="o">.</span><span class="n">constraints</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;FOLLOW_PATH&quot;</span><span class="p">)</span>
+<span class="n">mesh_star</span><span class="o">.</span><span class="n">constraints</span><span class="p">[</span><span class="s2">&quot;Follow Path&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">c_path</span>
+<span class="c1"># animate curve path (you can also use a driver, probably for the better)</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">path_duration</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">frame_end</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keyframe_insert</span><span class="p">(</span><span class="s2">&quot;eval_time&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">eval_time</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">frame_end</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">keyframe_insert</span><span class="p">(</span><span class="s2">&quot;eval_time&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">frame_end</span><span class="p">)</span>
+<span class="c1"># adjust f-curve interpolation</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">animation_data</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">fcurves</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keyframe_points</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s2">&quot;LINEAR&quot;</span>
+<span class="n">c_path</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">animation_data</span><span class="o">.</span><span class="n">action</span><span class="o">.</span><span class="n">fcurves</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keyframe_points</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s2">&quot;LINEAR&quot;</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_sf_follow_path.gif"><img alt="../../_images/proj_sf_follow_path.gif" src="../../_images/proj_sf_follow_path.gif" style="width: 100%;" /></a>
+</div>
+<p>Reuse the curve data to make a new curve object for the trail of the star.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add tail curve</span>
+<span class="n">t_curve</span> <span class="o">=</span> <span class="n">c_path</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">t_curve</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;tail_curve&quot;</span>
+<span class="n">C</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">t_curve</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>We make a geometry node tree to create a tapering trail, starting from making input and output nodes</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make a geometry node tree that create tail from the curve</span>
+<span class="n">geom_tail</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">node_groups</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;geom_tail&quot;</span><span class="p">,</span> <span class="s2">&quot;GeometryNodeTree&quot;</span><span class="p">)</span>
+<span class="c1"># make input and output nodes</span>
+<span class="n">geom_input</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;NodeGroupInput&quot;</span><span class="p">)</span>
+<span class="n">geom_output</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;NodeGroupOutput&quot;</span><span class="p">)</span>
+<span class="c1"># add input and output sockets</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;NodeSocketGeometry&quot;</span><span class="p">,</span> <span class="s2">&quot;Geometry&quot;</span><span class="p">)</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;NodeSocketMaterial&quot;</span><span class="p">,</span> <span class="s2">&quot;Material&quot;</span><span class="p">)</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;NodeSocketGeometry&quot;</span><span class="p">,</span> <span class="s2">&quot;Geometry&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Trim the curve to make a small segment that follows the star using a driver.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The animation will sync better if you use driver or keyframe for both the star and the tail, we choose to use different ones to demonstarte the two methods.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># nodes calcuates the start and end of the tail</span>
+<span class="n">value_0</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeValue&quot;</span><span class="p">)</span>
+<span class="n">sub_0</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeMath&quot;</span><span class="p">)</span>
+<span class="n">sub_1</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeMath&quot;</span><span class="p">)</span>
+<span class="n">trim_0</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;GeometryNodeTrimCurve&quot;</span><span class="p">)</span>
+<span class="c1"># make a value node that outputs current frame/end frame.</span>
+<span class="n">value_0_driver</span> <span class="o">=</span> <span class="n">value_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">driver_add</span><span class="p">(</span><span class="s2">&quot;default_value&quot;</span><span class="p">)</span>
+<span class="c1"># make variable for current frame</span>
+<span class="n">value_0_var_0</span> <span class="o">=</span> <span class="n">value_0_driver</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">value_0_var_0</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;c_frame&quot;</span>
+<span class="n">value_0_var_0</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id_type</span> <span class="o">=</span> <span class="s2">&quot;SCENE&quot;</span>
+<span class="n">value_0_var_0</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">scene</span>
+<span class="n">value_0_var_0</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;frame_current&quot;</span>
+<span class="c1"># make variable for end frame</span>
+<span class="n">value_0_var_1</span> <span class="o">=</span> <span class="n">value_0_driver</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">variables</span><span class="o">.</span><span class="n">new</span><span class="p">()</span>
+<span class="n">value_0_var_1</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;e_frame&quot;</span>
+<span class="n">value_0_var_1</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id_type</span> <span class="o">=</span> <span class="s2">&quot;SCENE&quot;</span>
+<span class="n">value_0_var_1</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">id</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">scene</span>
+<span class="n">value_0_var_1</span><span class="o">.</span><span class="n">targets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;frame_end&quot;</span>
+<span class="c1"># expression</span>
+<span class="n">value_0_driver</span><span class="o">.</span><span class="n">driver</span><span class="o">.</span><span class="n">expression</span> <span class="o">=</span> <span class="n">value_0_var_0</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="n">value_0_var_1</span><span class="o">.</span><span class="n">name</span>
+<span class="c1"># set values</span>
+<span class="n">sub_0</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="s2">&quot;SUBTRACT&quot;</span>
+<span class="n">sub_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">0.15</span>
+<span class="n">sub_1</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="s2">&quot;SUBTRACT&quot;</span>
+<span class="n">sub_1</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="c1"># connect the nodes</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">value_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sub_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">value_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">sub_1</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">geom_input</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trim_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">sub_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trim_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">sub_1</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">trim_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_sf_geom_1.png"><img alt="../../_images/proj_sf_geom_1.png" src="../../_images/proj_sf_geom_1.png" style="width: 100%;" /></a>
+</div>
+<p>Give the segment a round profile and taper</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># nodes that makes the taper</span>
+<span class="n">spline_param_0</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;GeometryNodeSplineParameter&quot;</span><span class="p">)</span>
+<span class="n">mul_0</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeMath&quot;</span><span class="p">)</span>
+<span class="n">curve_rad_0</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;GeometryNodeSetCurveRadius&quot;</span><span class="p">)</span>
+<span class="n">curve_circle_0</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;GeometryNodeCurvePrimitiveCircle&quot;</span><span class="p">)</span>
+<span class="n">curve2mesh_0</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;GeometryNodeCurveToMesh&quot;</span><span class="p">)</span>
+<span class="c1"># set values</span>
+<span class="n">mul_0</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="s2">&quot;MULTIPLY&quot;</span>
+<span class="n">mul_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">0.06</span>
+<span class="c1"># connect the nodes</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">spline_param_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">mul_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">trim_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">curve_rad_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">mul_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">curve_rad_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">curve_rad_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">curve2mesh_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">curve_circle_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">curve2mesh_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_sf_geom_2.png"><img alt="../../_images/proj_sf_geom_2.png" src="../../_images/proj_sf_geom_2.png" style="width: 100%;" /></a>
+</div>
+<p>Add <strong>Set Material</strong> nodes for later use, then apply the node tree to the tail curve</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add material</span>
+<span class="n">set_mat_0</span> <span class="o">=</span> <span class="n">geom_tail</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;GeometryNodeSetMaterial&quot;</span><span class="p">)</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">curve2mesh_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">set_mat_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">geom_input</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">set_mat_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">geom_tail</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">set_mat_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">geom_output</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="c1"># add geometry node to the tail</span>
+<span class="n">t_curve</span><span class="o">.</span><span class="n">modifiers</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;tail_maker&quot;</span><span class="p">,</span> <span class="s2">&quot;NODES&quot;</span><span class="p">)</span>
+<span class="n">t_curve</span><span class="o">.</span><span class="n">modifiers</span><span class="p">[</span><span class="s2">&quot;tail_maker&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">node_group</span> <span class="o">=</span> <span class="n">geom_tail</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_sf_geom_3.gif"><img alt="../../_images/proj_sf_geom_3.gif" src="../../_images/proj_sf_geom_3.gif" style="width: 100%;" /></a>
+</div>
+<p>Make an emissive material for the stars, most of them will be yellow and around 10% pink.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make material for the star</span>
+<span class="n">star_emissive</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;star&quot;</span><span class="p">)</span>
+<span class="n">star_emissive</span><span class="o">.</span><span class="n">use_nodes</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">star_emissive_nodes</span> <span class="o">=</span> <span class="n">star_emissive</span><span class="o">.</span><span class="n">node_tree</span>
+<span class="c1"># replace the principled BSDF with Emission</span>
+<span class="n">star_emissive_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">star_emissive_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;Principled BSDF&quot;</span><span class="p">])</span>
+<span class="n">star_glow</span> <span class="o">=</span> <span class="n">star_emissive_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeEmission&quot;</span><span class="p">)</span>
+<span class="c1"># set up random color</span>
+<span class="n">star_obj_info</span> <span class="o">=</span> <span class="n">star_emissive_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeObjectInfo&quot;</span><span class="p">)</span>
+<span class="n">star_color_ramp</span> <span class="o">=</span> <span class="n">star_emissive_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeValToRGB&quot;</span><span class="p">)</span>
+
+<span class="n">star_color_ramp</span><span class="o">.</span><span class="n">color_ramp</span><span class="o">.</span><span class="n">interpolation</span> <span class="o">=</span> <span class="s2">&quot;CONSTANT&quot;</span>
+<span class="n">star_color_ramp</span><span class="o">.</span><span class="n">color_ramp</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">position</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">star_color_ramp</span><span class="o">.</span><span class="n">color_ramp</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.8</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">star_color_ramp</span><span class="o">.</span><span class="n">color_ramp</span><span class="o">.</span><span class="n">elements</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.75</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">star_glow</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">5.0</span>
+
+<span class="n">star_emissive_nodes</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">star_obj_info</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">5</span><span class="p">],</span> <span class="n">star_color_ramp</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">star_emissive_nodes</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">star_color_ramp</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">star_glow</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">star_emissive_nodes</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+    <span class="n">star_glow</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">star_emissive</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;Material Output&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># append the material to the mesh object</span>
+<span class="n">mesh_star</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">star_emissive</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Make an emissive material for the tails, connecting the <code class="docutils literal notranslate"><span class="pre">Emission</span></code> shader to <code class="docutils literal notranslate"><span class="pre">Volume</span></code> so the thicker part will be brighter.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">Cycles</span></code> render engine to see the effect in real time.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make material for the tail</span>
+<span class="n">tail_emissive</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;tail&quot;</span><span class="p">)</span>
+<span class="n">tail_emissive</span><span class="o">.</span><span class="n">use_nodes</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">tail_emissive_nodes</span> <span class="o">=</span> <span class="n">tail_emissive</span><span class="o">.</span><span class="n">node_tree</span>
+<span class="c1"># replace the principled BSDF with Emission</span>
+<span class="n">tail_emissive_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">tail_emissive_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;Principled BSDF&quot;</span><span class="p">])</span>
+<span class="n">tail_glow</span> <span class="o">=</span> <span class="n">tail_emissive_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeEmission&quot;</span><span class="p">)</span>
+<span class="c1"># adjust the brightness and connect emission to volume</span>
+<span class="n">tail_glow</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">5.0</span>
+<span class="n">tail_emissive_nodes</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+    <span class="n">tail_glow</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">tail_emissive_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;Material Output&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># set the material</span>
+<span class="n">t_curve</span><span class="o">.</span><span class="n">modifiers</span><span class="p">[</span><span class="s2">&quot;tail_maker&quot;</span><span class="p">][</span><span class="s2">&quot;Input_1&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tail_emissive</span>
+
+</pre></div>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_sf_geom_mat.png"><img alt="../../_images/proj_sf_geom_mat.png" src="../../_images/proj_sf_geom_mat.png" style="width: 100%;" /></a>
+</div>
+<p>With no light scattering the stars looks a bit boring, here we add a glow and soften the image in the compositor.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To add true light scattering, make a big mesh that envelop the stars and add a material with a <strong>Volume Scatter</strong> node connected to the <code class="docutils literal notranslate"><span class="pre">Volume</span></code>, then adjust <code class="docutils literal notranslate"><span class="pre">Render</span> <span class="pre">&gt;</span> <span class="pre">Light</span> <span class="pre">Paths</span></code> in the properties area. This solution takes much longer to render.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add compositor nodes</span>
+<span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">use_nodes</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">compo_nodes</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">node_tree</span>
+<span class="n">bloom</span> <span class="o">=</span> <span class="n">compo_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;CompositorNodeGlare&quot;</span><span class="p">)</span>
+<span class="n">soften</span> <span class="o">=</span> <span class="n">compo_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;CompositorNodeFilter&quot;</span><span class="p">)</span>
+<span class="c1"># set parameters</span>
+<span class="n">bloom</span><span class="o">.</span><span class="n">glare_type</span> <span class="o">=</span> <span class="s2">&quot;FOG_GLOW&quot;</span>
+<span class="n">bloom</span><span class="o">.</span><span class="n">quality</span> <span class="o">=</span> <span class="s2">&quot;HIGH&quot;</span>
+<span class="n">bloom</span><span class="o">.</span><span class="n">mix</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">bloom</span><span class="o">.</span><span class="n">threshold</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">bloom</span><span class="o">.</span><span class="n">size</span> <span class="o">=</span> <span class="mi">9</span>
+<span class="c1"># connect nodes</span>
+<span class="n">compo_nodes</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">compo_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;Render Layers&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">bloom</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">compo_nodes</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">bloom</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">soften</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">compo_nodes</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">soften</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">compo_nodes</span><span class="o">.</span><span class="n">nodes</span><span class="p">[</span><span class="s2">&quot;Composite&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_sf_geom_compo.png"><img alt="../../_images/proj_sf_geom_compo.png" src="../../_images/proj_sf_geom_compo.png" style="width: 100%;" /></a>
+</div>
+<p>Now we make linked copies of the stars and tails at random locations, and make the stars rotate.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># duplicate stars and tails</span>
+<span class="c1"># set random seed</span>
+<span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">64</span><span class="p">):</span>
+    <span class="c1"># generate random offset</span>
+    <span class="n">new_coord_offset</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">([</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)])</span>
+    <span class="c1"># duplicate</span>
+    <span class="n">new_star</span> <span class="o">=</span> <span class="n">mesh_star</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">new_tail</span> <span class="o">=</span> <span class="n">t_curve</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+    <span class="n">C</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">new_star</span><span class="p">)</span>
+    <span class="n">C</span><span class="o">.</span><span class="n">collection</span><span class="o">.</span><span class="n">objects</span><span class="o">.</span><span class="n">link</span><span class="p">(</span><span class="n">new_tail</span><span class="p">)</span>
+    <span class="c1"># move the duplications</span>
+    <span class="n">new_star</span><span class="o">.</span><span class="n">location</span> <span class="o">+=</span> <span class="n">new_coord_offset</span>
+    <span class="n">new_tail</span><span class="o">.</span><span class="n">location</span> <span class="o">+=</span> <span class="n">new_coord_offset</span>
+    <span class="c1"># give star random rotation</span>
+    <span class="n">new_star</span><span class="o">.</span><span class="n">rotation_euler</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+    <span class="n">new_star</span><span class="o">.</span><span class="n">keyframe_insert</span><span class="p">(</span><span class="s2">&quot;rotation_euler&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">new_star</span><span class="o">.</span><span class="n">rotation_euler</span><span class="o">.</span><span class="n">y</span> <span class="o">+=</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+    <span class="n">new_star</span><span class="o">.</span><span class="n">keyframe_insert</span><span class="p">(</span><span class="s2">&quot;rotation_euler&quot;</span><span class="p">,</span> <span class="n">frame</span><span class="o">=</span><span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">frame_end</span><span class="p">)</span>
+<span class="c1"># hide original</span>
+<span class="n">mesh_star</span><span class="o">.</span><span class="n">hide_render</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">t_curve</span><span class="o">.</span><span class="n">hide_render</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_sf_geom_dup.png"><img alt="../../_images/proj_sf_geom_dup.png" src="../../_images/proj_sf_geom_dup.png" style="width: 100%;" /></a>
+</div>
+<p>Finally, add a camera and render the scene.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add camera</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">camera_add</span><span class="p">(</span>
+    <span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">160</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">math</span><span class="o">.</span><span class="n">radians</span><span class="p">(</span><span class="o">-</span><span class="mi">200</span><span class="p">))</span>
+<span class="p">)</span>
+<span class="n">cam_0</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">active_object</span>
+<span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">cam_0</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_sf_demo.gif"><img alt="../../_images/proj_sf_demo.gif" src="../../_images/proj_sf_demo.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Math Shape</label><div class="sd-tab-content docutils">
+<p>This example makes a material that draws shapes based on the mathematical function <span class="math notranslate nohighlight">\(b(a - x)x = d(c - y)y\)</span>.</p>
+<p>First, import the module and define the convenience variables.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+<span class="n">D</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span>
+</pre></div>
+</div>
+<p>Since both sides of the equation have the same form, we can make a node group for it</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">node_group_1_maker</span><span class="p">(</span><span class="n">ng_name</span><span class="o">=</span><span class="s2">&quot;axis_calc&quot;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;define the node group used in the material&quot;&quot;&quot;</span>
+    <span class="c1"># make new node tree in the data</span>
+    <span class="n">ngroup_1</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">node_groups</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">ng_name</span><span class="p">,</span> <span class="s2">&quot;ShaderNodeTree&quot;</span><span class="p">)</span>
+    <span class="c1"># add input/output sockets</span>
+    <span class="n">ngroup_1_inputs</span> <span class="o">=</span> <span class="n">ngroup_1</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;NodeGroupInput&quot;</span><span class="p">)</span>
+    <span class="n">ngroup_1</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;NodeSocketFloat&quot;</span><span class="p">,</span> <span class="s2">&quot;Axis&quot;</span><span class="p">)</span>
+    <span class="n">ngroup_1</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;NodeSocketFloat&quot;</span><span class="p">,</span> <span class="s2">&quot;par_0&quot;</span><span class="p">)</span>
+    <span class="n">ngroup_1</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;NodeSocketFloat&quot;</span><span class="p">,</span> <span class="s2">&quot;par_1&quot;</span><span class="p">)</span>
+    <span class="n">ngroup_1_outputs</span> <span class="o">=</span> <span class="n">ngroup_1</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;NodeGroupOutput&quot;</span><span class="p">)</span>
+    <span class="n">ngroup_1</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;NodeSocketFloat&quot;</span><span class="p">,</span> <span class="s2">&quot;Value&quot;</span><span class="p">)</span>
+    <span class="c1"># add math nodes</span>
+    <span class="n">ngroup_sub</span> <span class="o">=</span> <span class="n">ngroup_1</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeMath&quot;</span><span class="p">)</span>
+    <span class="n">ngroup_sub</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="s2">&quot;SUBTRACT&quot;</span>
+    <span class="n">ngroup_mul_0</span> <span class="o">=</span> <span class="n">ngroup_1</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeMath&quot;</span><span class="p">)</span>
+    <span class="n">ngroup_mul_0</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="s2">&quot;MULTIPLY&quot;</span>
+    <span class="n">ngroup_mul_1</span> <span class="o">=</span> <span class="n">ngroup_1</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeMath&quot;</span><span class="p">)</span>
+    <span class="n">ngroup_mul_1</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="s2">&quot;MULTIPLY&quot;</span>
+    <span class="c1">#link nodes</span>
+    <span class="n">ngroup_1</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">ngroup_1_inputs</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;Axis&quot;</span><span class="p">],</span> <span class="n">ngroup_sub</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ngroup_1</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">ngroup_1_inputs</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;Axis&quot;</span><span class="p">],</span> <span class="n">ngroup_mul_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ngroup_1</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">ngroup_1_inputs</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;par_0&quot;</span><span class="p">],</span> <span class="n">ngroup_sub</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ngroup_1</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">ngroup_1_inputs</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;par_1&quot;</span><span class="p">],</span> <span class="n">ngroup_mul_1</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">ngroup_1</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">ngroup_sub</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;Value&quot;</span><span class="p">],</span> <span class="n">ngroup_mul_0</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ngroup_1</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">ngroup_mul_0</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;Value&quot;</span><span class="p">],</span> <span class="n">ngroup_mul_1</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">ngroup_1</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">ngroup_mul_1</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;Value&quot;</span><span class="p">],</span> <span class="n">ngroup_1_outputs</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">&quot;ng_name&quot;</span><span class="p">:</span> <span class="n">ng_name</span><span class="p">,</span>
+        <span class="s2">&quot;ng_inputs&quot;</span><span class="p">:</span> <span class="n">ngroup_1</span><span class="o">.</span><span class="n">inputs</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+        <span class="s2">&quot;ng_outputs&quot;</span><span class="p">:</span> <span class="n">ngroup_1</span><span class="o">.</span><span class="n">outputs</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_ms_ngroup.png"><img alt="../../_images/proj_ms_ngroup.png" src="../../_images/proj_ms_ngroup.png" style="width: 100%;" /></a>
+</div>
+<p>With the function prepared, we can start creating the material.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make material and add it to the object</span>
+<span class="n">mat</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;math_shape_1&quot;</span><span class="p">)</span>
+<span class="n">mat</span><span class="o">.</span><span class="n">use_nodes</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+<span class="n">obj</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Add the nodes along with the node group. To make the curve visible, we calculate the difference between the two sides of the equation, then compare it to 0 with an <code class="docutils literal notranslate"><span class="pre">Epsilon</span></code> controlling the width.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># create node groups in data</span>
+<span class="n">ng_par</span> <span class="o">=</span> <span class="n">node_group_1_maker</span><span class="p">()</span>
+<span class="c1"># make nodes</span>
+<span class="n">tex_coord</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeTexCoord&quot;</span><span class="p">)</span>
+<span class="n">sep_xyz</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeSeparateXYZ&quot;</span><span class="p">)</span>
+<span class="n">out_node</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeOutputMaterial&quot;</span><span class="p">)</span>
+<span class="n">ngroup_x</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeGroup&quot;</span><span class="p">)</span>
+<span class="n">ngroup_x</span><span class="o">.</span><span class="n">node_tree</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">node_groups</span><span class="p">[</span><span class="n">ng_par</span><span class="p">[</span><span class="s2">&quot;ng_name&quot;</span><span class="p">]]</span>
+<span class="n">ngroup_y</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeGroup&quot;</span><span class="p">)</span>
+<span class="n">ngroup_y</span><span class="o">.</span><span class="n">node_tree</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">node_groups</span><span class="p">[</span><span class="n">ng_par</span><span class="p">[</span><span class="s2">&quot;ng_name&quot;</span><span class="p">]]</span>
+<span class="n">sub_node</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeMath&quot;</span><span class="p">)</span>
+<span class="n">sub_node</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="s2">&quot;SUBTRACT&quot;</span>
+<span class="n">comp_node</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeMath&quot;</span><span class="p">)</span>
+<span class="n">comp_node</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="s2">&quot;COMPARE&quot;</span>
+</pre></div>
+</div>
+<p>Then we connect the nodes</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># link nodes</span>
+<span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">tex_coord</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;UV&quot;</span><span class="p">],</span> <span class="n">sep_xyz</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">sep_xyz</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span> <span class="n">ngroup_x</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">sep_xyz</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span> <span class="n">ngroup_y</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+    <span class="n">ngroup_x</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">ng_par</span><span class="p">[</span><span class="s2">&quot;ng_outputs&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="n">sub_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+    <span class="n">ngroup_y</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">ng_par</span><span class="p">[</span><span class="s2">&quot;ng_outputs&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="n">sub_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">sub_node</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;Value&quot;</span><span class="p">],</span> <span class="n">comp_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">comp_node</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;Value&quot;</span><span class="p">],</span> <span class="n">out_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;Surface&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p>and set the parameters</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># set parameters</span>
+<span class="n">comp_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">comp_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">ngroup_x</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">ngroup_x</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">4.0</span>
+<span class="n">ngroup_y</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">ngroup_y</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">4.0</span>
+</pre></div>
+</div>
+<p>The resulting shader nodes should look like this</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_ms_shader.png"><img alt="../../_images/proj_ms_shader.png" src="../../_images/proj_ms_shader.png" style="width: 100%;" /></a>
+</div>
+<p>Add a plane to the scene, then link the material to the plane.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># add plane</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_plane_add</span><span class="p">()</span>
+<span class="n">mat_plane</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">active_object</span>
+<span class="n">mat_plane</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Switch to <code class="docutils literal notranslate"><span class="pre">Material</span> <span class="pre">Preview</span></code> and we can see the result</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_ms_result.png"><img alt="../../_images/proj_ms_result.png" src="../../_images/proj_ms_result.png" style="width: 100%;" /></a>
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Estimate the parameters with MLP</div>
+<p class="sd-card-text">With the power of machine learning, we can estimate the 4 parameters from the rendered image. Let us start from making the previous code into a function.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">material_maker</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Create math shape material&quot;&quot;&quot;</span>
+    <span class="c1"># make material and add it to the object</span>
+    <span class="n">mat</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;math_shape_1&quot;</span><span class="p">)</span>
+    <span class="n">mat</span><span class="o">.</span><span class="n">use_nodes</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="n">obj</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mat</span><span class="p">)</span>
+    <span class="c1"># create node groups</span>
+    <span class="n">ng_par</span> <span class="o">=</span> <span class="n">node_group_1_maker</span><span class="p">()</span>
+    <span class="c1"># make nodes</span>
+    <span class="n">tex_coord</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeTexCoord&quot;</span><span class="p">)</span>
+    <span class="n">sep_xyz</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeSeparateXYZ&quot;</span><span class="p">)</span>
+    <span class="n">out_node</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeOutputMaterial&quot;</span><span class="p">)</span>
+    <span class="n">ngroup_x</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeGroup&quot;</span><span class="p">)</span>
+    <span class="n">ngroup_x</span><span class="o">.</span><span class="n">node_tree</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">node_groups</span><span class="p">[</span><span class="n">ng_par</span><span class="p">[</span><span class="s2">&quot;ng_name&quot;</span><span class="p">]]</span>
+    <span class="n">ngroup_y</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeGroup&quot;</span><span class="p">)</span>
+    <span class="n">ngroup_y</span><span class="o">.</span><span class="n">node_tree</span> <span class="o">=</span> <span class="n">D</span><span class="o">.</span><span class="n">node_groups</span><span class="p">[</span><span class="n">ng_par</span><span class="p">[</span><span class="s2">&quot;ng_name&quot;</span><span class="p">]]</span>
+    <span class="n">sub_node</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeMath&quot;</span><span class="p">)</span>
+    <span class="n">sub_node</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="s2">&quot;SUBTRACT&quot;</span>
+    <span class="n">comp_node</span> <span class="o">=</span> <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">nodes</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;ShaderNodeMath&quot;</span><span class="p">)</span>
+    <span class="n">comp_node</span><span class="o">.</span><span class="n">operation</span> <span class="o">=</span> <span class="s2">&quot;COMPARE&quot;</span>
+    <span class="c1"># link nodes</span>
+    <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">tex_coord</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;UV&quot;</span><span class="p">],</span> <span class="n">sep_xyz</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">sep_xyz</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;X&quot;</span><span class="p">],</span> <span class="n">ngroup_x</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">sep_xyz</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;Y&quot;</span><span class="p">],</span> <span class="n">ngroup_y</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+        <span class="n">ngroup_x</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">ng_par</span><span class="p">[</span><span class="s2">&quot;ng_outputs&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="n">sub_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+        <span class="n">ngroup_y</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="n">ng_par</span><span class="p">[</span><span class="s2">&quot;ng_outputs&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">]],</span> <span class="n">sub_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="p">)</span>
+    <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">sub_node</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;Value&quot;</span><span class="p">],</span> <span class="n">comp_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">mat</span><span class="o">.</span><span class="n">node_tree</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="n">comp_node</span><span class="o">.</span><span class="n">outputs</span><span class="p">[</span><span class="s2">&quot;Value&quot;</span><span class="p">],</span> <span class="n">out_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="s2">&quot;Surface&quot;</span><span class="p">])</span>
+    <span class="c1"># set parameters</span>
+    <span class="n">comp_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">0.0</span>
+    <span class="n">comp_node</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="mf">0.1</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">ngroup_x</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">ngroup_x</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+        <span class="n">ngroup_y</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">ngroup_y</span><span class="o">.</span><span class="n">inputs</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>
+    <span class="p">]</span>
+</pre></div>
+</div>
+<p class="sd-card-text">This allows us to change the parameters easily.</p>
+<p class="sd-card-text">To render a batch of images for training, validataion, and testing, we need another script</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span>
+
+<span class="k">def</span> <span class="nf">batch_render</span><span class="p">(</span><span class="n">mat_module</span><span class="p">,</span> <span class="n">parlist</span><span class="p">,</span> <span class="n">png_path</span><span class="p">,</span> <span class="n">res</span><span class="p">):</span>
+    <span class="c1"># import material script</span>
+    <span class="n">mat_mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">mat_module</span><span class="p">)</span>
+    <span class="n">material_maker</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">mat_mod</span><span class="p">,</span> <span class="s2">&quot;material_maker&quot;</span><span class="p">)</span>
+    <span class="c1"># clean the scene</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">select_all</span><span class="p">(</span><span class="n">action</span><span class="o">=</span><span class="s2">&quot;SELECT&quot;</span><span class="p">)</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">outliner</span><span class="o">.</span><span class="n">orphans_purge</span><span class="p">()</span>
+    <span class="c1"># render settings</span>
+    <span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;BLENDER_EEVEE&quot;</span>
+    <span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">resolution_x</span> <span class="o">=</span> <span class="n">res</span>
+    <span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">resolution_y</span> <span class="o">=</span> <span class="n">res</span>
+    <span class="c1"># add camera</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">object</span><span class="o">.</span><span class="n">camera_add</span><span class="p">(</span><span class="n">location</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">2.75</span><span class="p">),</span> <span class="n">rotation</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">))</span>
+    <span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">camera</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">active_object</span>
+    <span class="c1"># add plane</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">mesh</span><span class="o">.</span><span class="n">primitive_plane_add</span><span class="p">()</span>
+    <span class="n">mat_plane</span> <span class="o">=</span> <span class="n">C</span><span class="o">.</span><span class="n">active_object</span>
+    <span class="c1"># create material</span>
+    <span class="n">list_vars</span> <span class="o">=</span> <span class="n">material_maker</span><span class="p">(</span><span class="n">mat_plane</span><span class="p">)</span>
+    <span class="c1"># render</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">parlist</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">list_vars</span><span class="p">,</span> <span class="n">i</span><span class="p">):</span>
+            <span class="n">j</span><span class="o">.</span><span class="n">default_value</span> <span class="o">=</span> <span class="n">k</span>
+        <span class="c1"># bpy.ops.render.render()</span>
+        <span class="c1"># img_list.append(render2np(res, res))</span>
+        <span class="n">D</span><span class="o">.</span><span class="n">scenes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">filepath</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">png_path</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;/batch_output_</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">.png&quot;</span>
+        <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">write_still</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">importlib</span></code> module allows us to dynamically import other modules, so you can use it for other material scripts. The <code class="docutils literal notranslate"><span class="pre">parlist</span></code> need to match the number of tunable parameters in the shader, and its length decides the number of images rendered.</p>
+<p class="sd-card-text">To implement the machine learning algorithm, we use <strong>PyTorch Lightning</strong> here, but you are free to use any library you like. First we import the necessary modules</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Make sure you have the other two scripts in the same folder.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">lightning.pytorch</span> <span class="k">as</span> <span class="nn">pl</span>
+<span class="kn">import</span> <span class="nn">natsort</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">transforms</span>
+<span class="kn">from</span> <span class="nn">lightning.pytorch</span> <span class="kn">import</span> <span class="n">loggers</span> <span class="k">as</span> <span class="n">pl_loggers</span>
+<span class="kn">from</span> <span class="nn">batch_renderer</span> <span class="kn">import</span> <span class="n">batch_render</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+</pre></div>
+</div>
+<p class="sd-card-text">We need a function that turns the images into tensors</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">img_trans</span><span class="p">(</span><span class="n">img_path</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert image to tensor&quot;&quot;&quot;</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+    <span class="n">tensor_image</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">))(</span>
+        <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()(</span><span class="n">transforms</span><span class="o">.</span><span class="n">Grayscale</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">image</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">flatten</span><span class="p">:</span>
+        <span class="n">tensor_image</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">tensor_image</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tensor_image</span>
+</pre></div>
+</div>
+<p class="sd-card-text">and a class that loads the .png files.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">png_loader</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Load the .png files&quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path</span><span class="p">,</span> <span class="n">true_pars</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">img_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">img_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">all_imgs</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_path</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_imgs</span> <span class="o">=</span> <span class="n">natsort</span><span class="o">.</span><span class="n">natsorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">all_imgs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">true_pars</span> <span class="o">=</span> <span class="n">true_pars</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total_imgs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">img_loc</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_path</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_imgs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">tensor_image</span> <span class="o">=</span> <span class="n">img_trans</span><span class="p">(</span><span class="n">img_loc</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tensor_image</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">true_pars</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+</pre></div>
+</div>
+<p class="sd-card-text">For this material, we need to restric the range of the parameters so the image will not be completely black</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scale_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">to_gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">to_gpu</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p class="sd-card-text">The model in this example is a simple <strong>Multi-Layer Perceptron(MLP)</strong> with 2 hidden layers, and a mean-square-error loss function is used. The output is scaled from <span class="math notranslate nohighlight">\((0,1)\)</span> to the range specified in <code class="docutils literal notranslate"><span class="pre">scale_func</span></code>.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">Feel free to try your own model.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">test_shader_nn</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">LightningModule</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">img_size</span><span class="p">,</span>
+        <span class="n">scale_func</span><span class="p">,</span>
+        <span class="n">n_par</span><span class="p">,</span>
+        <span class="n">nn_size</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_hyperparameters</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shader_nn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">img_size</span> <span class="o">*</span> <span class="n">img_size</span><span class="p">,</span> <span class="n">nn_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">nn_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nn_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">nn_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n_par</span><span class="p">),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">(),</span>
+        <span class="p">)</span>
+        <span class="c1"># self.tmp_path = Path.cwd() / tmp_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale_func</span> <span class="o">=</span> <span class="n">scale_func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">img_size</span> <span class="o">=</span> <span class="n">img_size</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">output_par</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">parlist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shader_nn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">parlist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_func</span><span class="p">(</span><span class="n">parlist</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">output_par</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">parlist</span>
+
+    <span class="k">def</span> <span class="nf">training_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">batch_idx</span><span class="p">):</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;train_loss&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss</span>
+
+    <span class="k">def</span> <span class="nf">validation_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">batch_idx</span><span class="p">):</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;val_loss&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss</span>
+
+    <span class="k">def</span> <span class="nf">test_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">batch_idx</span><span class="p">):</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;test_loss&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss</span>
+
+    <span class="k">def</span> <span class="nf">_calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">batch</span>
+        <span class="n">y_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss</span>
+
+    <span class="k">def</span> <span class="nf">configure_optimizers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">Define the parameters</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span><span class="o">.</span><span class="n">seed_everything</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">shader_name</span> <span class="o">=</span> <span class="s2">&quot;math_shape_1&quot;</span>
+<span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">data_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">)</span>
+<span class="n">render_res</span> <span class="o">=</span> <span class="mi">32</span>
+<span class="n">test_res</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">es_patience</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;RENDER_PATH&quot;</span>
+<span class="n">par_path</span> <span class="o">=</span> <span class="s2">&quot;PARAMETER_PATH&quot;</span>
+<span class="n">tmp_path</span> <span class="o">=</span> <span class="s2">&quot;TEST_IMAGE_PATH&quot;</span>
+<span class="n">test_image_ind</span> <span class="o">=</span> <span class="s2">&quot;148&quot;</span>
+<span class="n">generate_data</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">training</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">n_par</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">nn_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
+<p class="sd-card-text">and render the images with randomly generated parameters.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">When <code class="docutils literal notranslate"><span class="pre">generate_data</span></code> is <code class="docutils literal notranslate"><span class="pre">False</span></code>, it reuses the images rendered before. Make sure the other parameters have not been unchanged.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate/read data</span>
+<span class="k">if</span> <span class="n">generate_data</span><span class="p">:</span>
+    <span class="n">data_par</span> <span class="o">=</span> <span class="n">scale_func</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">data_size</span><span class="p">,</span> <span class="n">n_par</span><span class="p">),</span> <span class="n">to_gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">batch_render</span><span class="p">(</span><span class="n">shader_name</span><span class="p">,</span> <span class="n">data_par</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span> <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">data_path</span><span class="p">),</span> <span class="n">render_res</span><span class="p">)</span>  
+    <span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">par_path</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">data_par</span><span class="p">,</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">par_path</span> <span class="o">/</span> <span class="s2">&quot;data_par.pt&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">data_par</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">par_path</span> <span class="o">/</span> <span class="s2">&quot;data_par.pt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">Split the image data into training, validataion and testing sets.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">full_dataset</span> <span class="o">=</span> <span class="n">png_loader</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">data_par</span><span class="p">)</span>
+<span class="n">train_set</span><span class="p">,</span> <span class="n">val_set</span><span class="p">,</span> <span class="n">test_set</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span>
+    <span class="n">full_dataset</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># make dataloaders</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+    <span class="n">train_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">val_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+    <span class="n">val_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+    <span class="n">test_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">Train the model and test it.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># use early stopping</span>
+<span class="n">cb_es</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="s2">&quot;val_loss&quot;</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="n">es_patience</span><span class="p">)</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Trainer</span><span class="p">(</span>
+    <span class="n">max_epochs</span><span class="o">=</span><span class="n">max_epochs</span><span class="p">,</span>
+    <span class="n">accelerator</span><span class="o">=</span><span class="s2">&quot;gpu&quot;</span><span class="p">,</span>
+    <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">cb_es</span><span class="p">],</span>
+    <span class="n">logger</span><span class="o">=</span><span class="n">pl_loggers</span><span class="o">.</span><span class="n">CSVLogger</span><span class="p">(</span><span class="s2">&quot;logs/&quot;</span><span class="p">),</span>
+    <span class="c1"># logger=pl_loggers.CSVLogger(Path.cwd() / par_path),</span>
+<span class="p">)</span>
+<span class="k">if</span> <span class="n">training</span><span class="p">:</span>
+    <span class="n">shader_fit_nn</span> <span class="o">=</span> <span class="n">test_shader_nn</span><span class="p">(</span>
+        <span class="n">render_res</span><span class="p">,</span>
+        <span class="c1"># tmp_path,</span>
+        <span class="n">scale_func</span><span class="p">,</span>
+        <span class="c1"># dropout_par,</span>
+        <span class="n">n_par</span><span class="p">,</span>
+        <span class="n">nn_size</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># train</span>
+    <span class="n">trainer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="n">shader_fit_nn</span><span class="p">,</span> 
+        <span class="n">train_dataloaders</span><span class="o">=</span><span class="n">train_loader</span><span class="p">,</span> 
+        <span class="n">val_dataloaders</span><span class="o">=</span><span class="n">val_loader</span>
+    <span class="p">)</span>
+    <span class="n">trainer</span><span class="o">.</span><span class="n">save_checkpoint</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">par_path</span> <span class="o">/</span> <span class="s2">&quot;checkpoint.ckpt&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">shader_fit_nn</span> <span class="o">=</span> <span class="n">test_shader_nn</span><span class="o">.</span><span class="n">load_from_checkpoint</span><span class="p">(</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">par_path</span> <span class="o">/</span> <span class="s2">&quot;checkpoint.ckpt&quot;</span>
+    <span class="p">)</span>
+
+<span class="c1"># testing</span>
+<span class="n">trainer</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">shader_fit_nn</span><span class="p">,</span> <span class="n">dataloaders</span><span class="o">=</span><span class="n">test_loader</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">Using the estimated parameters, you can check how closely the image generated resembles the original.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">shader_fit_nn</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="c1">##get one sample</span>
+<span class="n">test_image</span> <span class="o">=</span> <span class="n">img_trans</span><span class="p">(</span>
+    <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">data_path</span> <span class="o">/</span> <span class="p">(</span><span class="s2">&quot;batch_output_&quot;</span> <span class="o">+</span> <span class="n">test_image_ind</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span><span class="p">),</span> <span class="kc">False</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">shader_fit_nn</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">fit_par</span> <span class="o">=</span> <span class="n">shader_fit_nn</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">test_image</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">))</span>
+<span class="n">batch_render</span><span class="p">(</span>
+    <span class="n">shader_name</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">data_par</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="nb">int</span><span class="p">(</span><span class="n">test_image_ind</span><span class="p">)],</span> <span class="n">fit_par</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span>
+    <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">tmp_path</span><span class="p">),</span>
+    <span class="n">test_res</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">Original</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_ms_original.png"><img alt="../../_images/proj_ms_original.png" src="../../_images/proj_ms_original.png" style="width: 100%;" /></a>
+</div>
+<p class="sd-card-text">Estimated</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_ms_est.png"><img alt="../../_images/proj_ms_est.png" src="../../_images/proj_ms_est.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Grass Deformation</label><div class="sd-tab-content docutils">
+<p>Here we render the “Grass Deformation” project we made in the last chapter using Python script. As usual, import the modules first</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span>
+</pre></div>
+</div>
+<p>and load the .blend file</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># open blender file</span>
+<span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">wm</span><span class="o">.</span><span class="n">open_mainfile</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="s2">&quot;PATH_TO_YOUR_FILE&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>You can move the control object to influence the rendering</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># move control object</span>
+<span class="n">D</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;Control&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2</span>
+<span class="n">D</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;Control&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">D</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;Control&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="mf">0.9</span>
+</pre></div>
+</div>
+<p>and change the render settings.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;BLENDER_EEVEE&quot;</span>
+<span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">resolution_x</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">resolution_y</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">filepath</span> <span class="o">=</span> <span class="s2">&quot;RENDER_PATH&quot;</span>
+</pre></div>
+</div>
+<p>With everything set, render the scene.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">write_still</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/proj_gd_render.png" src="../../_images/proj_gd_render.png" />
+</div>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Estimate the coordinates with MLP</div>
+<p class="sd-card-text">Using a basic machine learning model allows us to estimate the location of the control object from the rendered image. First, we need a script that can render images needed for model training</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+<span class="kn">import</span> <span class="nn">importlib</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span>
+
+<span class="k">def</span> <span class="nf">batch_render_2</span><span class="p">(</span><span class="n">config_module</span><span class="p">,</span> <span class="n">par_list</span><span class="p">,</span> <span class="n">bl_path</span><span class="p">,</span> <span class="n">png_path</span><span class="p">,</span> <span class="n">res</span><span class="p">):</span>
+    <span class="c1"># open blender file</span>
+    <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">wm</span><span class="o">.</span><span class="n">open_mainfile</span><span class="p">(</span><span class="n">filepath</span><span class="o">=</span><span class="n">bl_path</span><span class="p">)</span>
+    <span class="c1"># import</span>
+    <span class="n">bl_config_mod</span> <span class="o">=</span> <span class="n">importlib</span><span class="o">.</span><span class="n">import_module</span><span class="p">(</span><span class="n">config_module</span><span class="p">)</span>
+    <span class="n">bl_config</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">bl_config_mod</span><span class="p">,</span> <span class="s2">&quot;bl_config&quot;</span><span class="p">)</span>
+    <span class="c1"># render settings</span>
+    <span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="s2">&quot;BLENDER_EEVEE&quot;</span>
+    <span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">resolution_x</span> <span class="o">=</span> <span class="n">res</span>
+    <span class="n">C</span><span class="o">.</span><span class="n">scene</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">resolution_y</span> <span class="o">=</span> <span class="n">res</span>
+    <span class="c1"># render</span>
+    <span class="k">for</span> <span class="n">n</span><span class="p">,</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">par_list</span><span class="p">):</span>
+        <span class="n">bl_config</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        <span class="n">D</span><span class="o">.</span><span class="n">scenes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">filepath</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">png_path</span><span class="p">)</span> <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;/batch_output_</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">.png&quot;</span>
+        <span class="n">bpy</span><span class="o">.</span><span class="n">ops</span><span class="o">.</span><span class="n">render</span><span class="o">.</span><span class="n">render</span><span class="p">(</span><span class="n">write_still</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p class="sd-card-text">The <code class="docutils literal notranslate"><span class="pre">config_module</span></code> here is a function that adjusts the position of the control object</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p class="sd-card-text">You can put the code in the <code class="docutils literal notranslate"><span class="pre">batch_render_2</span></code> at the cost of a bit flexibility.</p>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">bpy</span>
+
+<span class="n">D</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">data</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">bpy</span><span class="o">.</span><span class="n">context</span>
+
+<span class="k">def</span> <span class="nf">bl_config</span><span class="p">(</span><span class="n">par_list</span><span class="p">):</span>
+    <span class="c1"># set parameters</span>
+    <span class="n">D</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;Control&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">x</span> <span class="o">=</span> <span class="n">par_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">D</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;Control&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">y</span> <span class="o">=</span> <span class="n">par_list</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">D</span><span class="o">.</span><span class="n">objects</span><span class="p">[</span><span class="s2">&quot;Control&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">location</span><span class="o">.</span><span class="n">z</span> <span class="o">=</span> <span class="n">par_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+<p class="sd-card-text">The model setup is the same as the ones in the <strong>Math Shape</strong> project.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">lightning.pytorch</span> <span class="k">as</span> <span class="nn">pl</span>
+<span class="kn">import</span> <span class="nn">natsort</span>
+<span class="kn">from</span> <span class="nn">torchvision</span> <span class="kn">import</span> <span class="n">transforms</span>
+<span class="kn">from</span> <span class="nn">lightning.pytorch</span> <span class="kn">import</span> <span class="n">loggers</span> <span class="k">as</span> <span class="n">pl_loggers</span>
+<span class="kn">from</span> <span class="nn">batch_render_2</span> <span class="kn">import</span> <span class="n">batch_render_2</span>
+<span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">img_trans</span><span class="p">(</span><span class="n">img_path</span><span class="p">,</span> <span class="n">flatten</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Convert picture to tensor&quot;&quot;&quot;</span>
+    <span class="n">image</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">img_path</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">)</span>
+    <span class="n">tensor_image</span> <span class="o">=</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Normalize</span><span class="p">((</span><span class="mf">0.5</span><span class="p">),</span> <span class="p">(</span><span class="mf">0.5</span><span class="p">))(</span>
+        <span class="n">transforms</span><span class="o">.</span><span class="n">ToTensor</span><span class="p">()(</span><span class="n">transforms</span><span class="o">.</span><span class="n">Grayscale</span><span class="p">(</span><span class="mi">1</span><span class="p">)(</span><span class="n">image</span><span class="p">))</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">flatten</span><span class="p">:</span>
+        <span class="n">tensor_image</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">tensor_image</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tensor_image</span>
+
+<span class="k">class</span> <span class="nc">png_loader</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">Dataset</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">img_path</span><span class="p">,</span> <span class="n">true_pars</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">img_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">img_path</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">all_imgs</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_path</span><span class="p">)</span><span class="o">.</span><span class="n">iterdir</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">total_imgs</span> <span class="o">=</span> <span class="n">natsort</span><span class="o">.</span><span class="n">natsorted</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">all_imgs</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">true_pars</span> <span class="o">=</span> <span class="n">true_pars</span>
+
+    <span class="k">def</span> <span class="fm">__len__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">total_imgs</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="fm">__getitem__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">idx</span><span class="p">):</span>
+        <span class="n">img_loc</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">img_path</span><span class="p">)</span> <span class="o">/</span> <span class="bp">self</span><span class="o">.</span><span class="n">total_imgs</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+        <span class="n">tensor_image</span> <span class="o">=</span> <span class="n">img_trans</span><span class="p">(</span><span class="n">img_loc</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">tensor_image</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">true_pars</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+<span class="k">class</span> <span class="nc">test_shader_nn</span><span class="p">(</span><span class="n">pl</span><span class="o">.</span><span class="n">LightningModule</span><span class="p">):</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">img_size</span><span class="p">,</span>
+        <span class="n">scale_func</span><span class="p">,</span>
+        <span class="n">n_par</span><span class="p">,</span>
+        <span class="n">nn_size</span><span class="p">,</span>
+    <span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">save_hyperparameters</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">shader_nn</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">img_size</span> <span class="o">*</span> <span class="n">img_size</span><span class="p">,</span> <span class="n">nn_size</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">nn_size</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">nn_size</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">ReLU</span><span class="p">(),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">nn_size</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n_par</span><span class="p">),</span>
+            <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sigmoid</span><span class="p">(),</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">scale_func</span> <span class="o">=</span> <span class="n">scale_func</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">img_size</span> <span class="o">=</span> <span class="n">img_size</span>
+
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">output_par</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">parlist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">shader_nn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">parlist</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_func</span><span class="p">(</span><span class="n">parlist</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">output_par</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">parlist</span>
+
+    <span class="k">def</span> <span class="nf">training_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">batch_idx</span><span class="p">):</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;train_loss&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss</span>
+
+    <span class="k">def</span> <span class="nf">validation_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">batch_idx</span><span class="p">):</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;val_loss&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss</span>
+
+    <span class="k">def</span> <span class="nf">test_step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">,</span> <span class="n">batch_idx</span><span class="p">):</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calc</span><span class="p">(</span><span class="n">batch</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="s2">&quot;test_loss&quot;</span><span class="p">,</span> <span class="n">loss</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss</span>
+
+    <span class="k">def</span> <span class="nf">_calc</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">batch</span><span class="p">):</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">batch</span>
+        <span class="n">y_hat</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">loss</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">mse_loss</span><span class="p">(</span><span class="n">y_hat</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loss</span>
+
+    <span class="k">def</span> <span class="nf">configure_optimizers</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">The parameters in <code class="docutils literal notranslate"><span class="pre">scale_func</span></code> are changed according to the movement range of the control object</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">scale_func</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">to_gpu</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">2.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">])</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">to_gpu</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</pre></div>
+</div>
+<p class="sd-card-text">Set the parameters</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pl</span><span class="o">.</span><span class="n">seed_everything</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">bl_module</span> <span class="o">=</span> <span class="s2">&quot;CONFIG_MODULE_NAME&quot;</span>
+<span class="n">bl_file</span> <span class="o">=</span> <span class="s2">&quot;PATH_TO_BLEND_FILE&quot;</span>
+<span class="n">max_epochs</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">data_size</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e5</span><span class="p">)</span>
+<span class="n">render_res</span> <span class="o">=</span> <span class="mi">64</span>
+<span class="n">test_res</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">es_patience</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">data_path</span> <span class="o">=</span> <span class="s2">&quot;RENDER_PATH&quot;</span>
+<span class="n">par_path</span> <span class="o">=</span> <span class="s2">&quot;PARAMETER_PATH&quot;</span>
+<span class="n">tmp_path</span> <span class="o">=</span> <span class="s2">&quot;TEST_IMAGE_PATH&quot;</span>
+<span class="n">test_image_ind</span> <span class="o">=</span> <span class="s2">&quot;6&quot;</span>
+<span class="n">generate_data</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">training</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">n_par</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">nn_size</span> <span class="o">=</span> <span class="p">[</span><span class="mi">64</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
+<p class="sd-card-text">and render the images.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># generate/read data</span>
+<span class="k">if</span> <span class="n">generate_data</span><span class="p">:</span>
+    <span class="n">data_par</span> <span class="o">=</span> <span class="n">scale_func</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">data_size</span><span class="p">,</span> <span class="n">n_par</span><span class="p">),</span> <span class="n">to_gpu</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">batch_render_2</span><span class="p">(</span>
+        <span class="n">bl_module</span><span class="p">,</span>
+        <span class="n">data_par</span><span class="o">.</span><span class="n">tolist</span><span class="p">(),</span>
+        <span class="n">bl_file</span><span class="p">,</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">data_path</span><span class="p">),</span>
+        <span class="n">render_res</span><span class="p">,</span>
+    <span class="p">)</span>  <span class="c1"># rendering</span>
+    <span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">par_path</span><span class="p">)</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">data_par</span><span class="p">,</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">par_path</span> <span class="o">/</span> <span class="s2">&quot;data_par.pt&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">data_par</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">par_path</span> <span class="o">/</span> <span class="s2">&quot;data_par.pt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">Split the image data into training, validation, and testing sets.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># make datasets</span>
+<span class="n">full_dataset</span> <span class="o">=</span> <span class="n">png_loader</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">data_par</span><span class="p">)</span>
+<span class="n">train_set</span><span class="p">,</span> <span class="n">val_set</span><span class="p">,</span> <span class="n">test_set</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">random_split</span><span class="p">(</span>
+    <span class="n">full_dataset</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">]</span>
+<span class="p">)</span>
+<span class="c1"># make dataloaders</span>
+<span class="n">train_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+    <span class="n">train_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">val_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+    <span class="n">val_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+<span class="n">test_loader</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">utils</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">DataLoader</span><span class="p">(</span>
+    <span class="n">test_set</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">Train the model</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># use early stopping</span>
+<span class="n">cb_es</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">callbacks</span><span class="o">.</span><span class="n">EarlyStopping</span><span class="p">(</span><span class="s2">&quot;val_loss&quot;</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="n">es_patience</span><span class="p">)</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Trainer</span><span class="p">(</span>
+    <span class="n">max_epochs</span><span class="o">=</span><span class="n">max_epochs</span><span class="p">,</span>
+    <span class="n">accelerator</span><span class="o">=</span><span class="s2">&quot;gpu&quot;</span><span class="p">,</span>
+    <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">cb_es</span><span class="p">],</span>
+    <span class="n">logger</span><span class="o">=</span><span class="n">pl_loggers</span><span class="o">.</span><span class="n">CSVLogger</span><span class="p">(</span><span class="s2">&quot;logs/&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="k">if</span> <span class="n">training</span><span class="p">:</span>
+    <span class="n">shader_fit_nn</span> <span class="o">=</span> <span class="n">test_shader_nn</span><span class="p">(</span>
+        <span class="n">render_res</span><span class="p">,</span>
+        <span class="n">scale_func</span><span class="p">,</span>
+        <span class="n">n_par</span><span class="p">,</span>
+        <span class="n">nn_size</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="c1"># train</span>
+    <span class="n">trainer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+        <span class="n">model</span><span class="o">=</span><span class="n">shader_fit_nn</span><span class="p">,</span> 
+        <span class="n">train_dataloaders</span><span class="o">=</span><span class="n">train_loader</span><span class="p">,</span> 
+        <span class="n">val_dataloaders</span><span class="o">=</span><span class="n">val_loader</span>
+    <span class="p">)</span>
+    <span class="n">trainer</span><span class="o">.</span><span class="n">save_checkpoint</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">par_path</span> <span class="o">/</span> <span class="s2">&quot;checkpoint.ckpt&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">shader_fit_nn</span> <span class="o">=</span> <span class="n">test_shader_nn</span><span class="o">.</span><span class="n">load_from_checkpoint</span><span class="p">(</span>
+        <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">par_path</span> <span class="o">/</span> <span class="s2">&quot;checkpoint.ckpt&quot;</span>
+    <span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">and test it</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">trainer</span><span class="o">.</span><span class="n">test</span><span class="p">(</span><span class="n">model</span><span class="o">=</span><span class="n">shader_fit_nn</span><span class="p">,</span> <span class="n">dataloaders</span><span class="o">=</span><span class="n">test_loader</span><span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">You can generate an image from the esitmated paramters and compare it to the original.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># image test</span>
+<span class="n">shader_fit_nn</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="c1">##get one sample</span>
+<span class="n">test_image</span> <span class="o">=</span> <span class="n">img_trans</span><span class="p">(</span>
+    <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">data_path</span> <span class="o">/</span> <span class="p">(</span><span class="s2">&quot;batch_output_&quot;</span> <span class="o">+</span> <span class="n">test_image_ind</span> <span class="o">+</span> <span class="s2">&quot;.png&quot;</span><span class="p">),</span> <span class="kc">False</span>
+<span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">shader_fit_nn</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">)</span>
+<span class="n">fit_par</span> <span class="o">=</span> <span class="n">shader_fit_nn</span><span class="o">.</span><span class="n">forward</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">flatten</span><span class="p">(</span><span class="n">test_image</span><span class="p">)</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">))</span>
+<span class="n">batch_render_2</span><span class="p">(</span>
+    <span class="n">bl_module</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">data_par</span><span class="o">.</span><span class="n">tolist</span><span class="p">()[</span><span class="nb">int</span><span class="p">(</span><span class="n">test_image_ind</span><span class="p">)],</span> <span class="n">fit_par</span><span class="o">.</span><span class="n">tolist</span><span class="p">()],</span>
+    <span class="n">bl_file</span><span class="p">,</span>
+    <span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span> <span class="o">/</span> <span class="n">tmp_path</span><span class="p">),</span>
+    <span class="n">test_res</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p class="sd-card-text">Original</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_gd_original.png"><img alt="../../_images/proj_gd_original.png" src="../../_images/proj_gd_original.png" style="width: 100%;" /></a>
+</div>
+<p class="sd-card-text">Estimated</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/proj_gd_est.png"><img alt="../../_images/proj_gd_est.png" src="../../_images/proj_gd_est.png" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./markdown\scripting"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="nodes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Node Scripting</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../extras/extra.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Extras</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Graduate Program in Data Science, Tohoku University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

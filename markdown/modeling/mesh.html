@@ -1,0 +1,805 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mesh Modeling &#8212; 3D Graphics Basics with Blender</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'markdown/modeling/mesh';</script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Curve Modeling" href="curve.html" />
+    <link rel="prev" title="Object" href="object.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro/intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/gp_logo.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/gp_logo.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro/intro.html">
+                    3D Graphics Basics with Blender
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../UI/UI.html">UI</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../UI/elements.html">Elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../UI/navigation.html">Navigation</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="modeling.html">Modeling</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="object.html">Object</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Mesh Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="curve.html">Curve Modeling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modifier.html">Modifier</a></li>
+<li class="toctree-l2"><a class="reference internal" href="animation.html">Animation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="constraint.html">Constraint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modeling_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../material/material.html">Material</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../material/principle.html">Material Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/PBR.html">Physically Based Rendering (PBR)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/node_tree.html">More about Shader Nodes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../material/material_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../render/render.html">Render</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../render/engine.html">Rendering engines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/lighting.html">Lighting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/camera.html">Camera</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/compositing.html">Compositing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/rendering.html">Rendering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../render/render_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../geom_node/geom_node.html">Geometry Node</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/node_tree.html">Geometry Node Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/more_nodes.html">More about Geometry Node</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../geom_node/geom_node_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../scripting/scripting.html">Scripting</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/tooltip.html">Scripting Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/py_script.html">API Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/nodes.html">Node Scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../scripting/scripting_project.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../extras/extra.html">Extras</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../extras/sculpting.html">Sculpting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/physics_particles.html">Physics Simulation and Particle System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/rigging.html">Rigging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extras/more_addons.html">More about Add-ons</a></li>
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/markdown/modeling/mesh.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Mesh Modeling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-mode">Edit Mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vertex-edge-and-face">Vertex, Edge, and Face</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tri-quad-n-gon-and-pole">Tri, Quad, N-Gon, and Pole</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewport-shading">Viewport Shading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-editing-tools">Mesh editing tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips">Tips</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="tex2jax_ignore mathjax_ignore section" id="mesh-modeling">
+<span id="mesh-editing"></span><h1>Mesh Modeling<a class="headerlink" href="#mesh-modeling" title="Permalink to this headline">#</a></h1>
+<p><strong>Mesh Modeling</strong> is the most common way to make 3D models for all kinds of things. Before we dive into how we do it, let’s go through some basics first.</p>
+<div class="section" id="edit-mode">
+<h2>Edit Mode<a class="headerlink" href="#edit-mode" title="Permalink to this headline">#</a></h2>
+<p><strong>Edit mode</strong> is the 3D viewport interaction mode in which we do all the mesh modeling. Select a mesh object(like the cube you already have), use the drop-down menu on the left side of the header or press <kbd>Tab</kbd> to enter edit mode. You can also select multiple mesh objects to edit them at the same time. Once in edit mode, the toolbar offers a different list of tools, and the header also partially changes compared to object mode.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/edit_mode.png"><img alt="../../_images/edit_mode.png" src="../../_images/edit_mode.png" style="width: 100%;" /></a>
+</div>
+</div>
+<div class="section" id="vertex-edge-and-face">
+<h2>Vertex, Edge, and Face<a class="headerlink" href="#vertex-edge-and-face" title="Permalink to this headline">#</a></h2>
+<p>All mesh consists of <strong>Vertices</strong>, <strong>Edges</strong>, and <strong>Faces</strong>. Vertices, represented by small squares in <strong>Vertex Select</strong> mode, are points in space without any volume. Edges are lines created by connecting two Vertices, and faces are surfaces/polygons defined by the edges surrounding them. To modify vertices/edges/faces, you can switch to the desired <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Mode</span></code>, by <kbd>Left Mouse Click</kbd> on their respective icons on the right of the object interactive mode selection, or pressing<kbd>1</kbd>,<kbd>2</kbd>, and <kbd>3</kbd>(not to be confused with <kbd>Numpad 1</kbd>, <kbd>Numpad 2</kbd>, and <kbd>Numpad 3</kbd>)</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>If this is the first time you ever enter edit mode, The <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Mode</span></code> should be <code class="docutils literal notranslate"><span class="pre">Vertex</span> <span class="pre">Select</span></code>.</p></li>
+<li><p>When you switch the <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Mode</span></code> from face select to <code class="docutils literal notranslate"><span class="pre">Edge/Vertex</span> <span class="pre">Select</span></code>, the edges/vertices associated with the chosen face will remain selected. This also applys to changing from <code class="docutils literal notranslate"><span class="pre">Edge</span> <span class="pre">Select</span></code> to <code class="docutils literal notranslate"><span class="pre">Vertex</span> <span class="pre">Select</span></code>.</p></li>
+</ul>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/mesh_select_mode.gif"><img alt="../../_images/mesh_select_mode.gif" src="../../_images/mesh_select_mode.gif" style="width: 100%;" /></a>
+</div>
+<p>An important property of a face is its <strong>Normal</strong>. If you still remember your math, the normal vector is the vector perpendicular to a surface, and this is also the case in 3D modeling. It is used to determine the direction a face is pointing and is crucial to shading.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>If you just want know whether you are looking at the front or back side of the faces, open the <code class="docutils literal notranslate"><span class="pre">Viewport</span> <span class="pre">Overlay</span></code> menu and tick <code class="docutils literal notranslate"><span class="pre">Geometry</span> <span class="pre">&gt;</span> <span class="pre">Face</span> <span class="pre">Orientation</span></code>. The front of a face will be blue and the back will be red.</p></li>
+</ul>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/face_orientation.gif"><img alt="../../_images/face_orientation.gif" src="../../_images/face_orientation.gif" style="width: 100%;" /></a>
+</div>
+<ul class="simple">
+<li><p>This is Suzanne the Monkey, you can add her to your scene in <code class="docutils literal notranslate"><span class="pre">Add</span> <span class="pre">&gt;</span> <span class="pre">Mesh</span> <span class="pre">&gt;</span> <span class="pre">Monkey</span></code>.</p></li>
+</ul>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/normal.png" src="../../_images/normal.png" />
+</div>
+</div>
+<div class="section" id="tri-quad-n-gon-and-pole">
+<span id="face-types"></span><h2>Tri, Quad, N-Gon, and Pole<a class="headerlink" href="#tri-quad-n-gon-and-pole" title="Permalink to this headline">#</a></h2>
+<p>To make nice-looking meshes, there are some concepts you need to remember, and an important one is the type of faces you will be making. A face with 3 edges is called a <strong>Tri(triangle)</strong> (like face 5 and 6 in the image), 4 called a <strong>Quad(quadrilateral)</strong>(like face 7), and 5 or more an <strong>N-Gon</strong> (like face 23). Generally speaking, quads are considered the most desirable because they work well with all the tools in 3D modeling software; tris does not work with certain tools, like loop cut(you will see it soon); N-Gons should be avoided because they are prone to producing unwanted results.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To see the indices, you need to turn on <code class="docutils literal notranslate"><span class="pre">Developer</span> <span class="pre">Extra</span></code> in <code class="docutils literal notranslate"><span class="pre">Edit</span> <span class="pre">&gt;</span> <span class="pre">Preferences</span> <span class="pre">&gt;</span> <span class="pre">Interface</span> <span class="pre">&gt;</span> <span class="pre">Display</span></code>, then open <code class="docutils literal notranslate"><span class="pre">Viewport</span> <span class="pre">Overlay</span></code> dropdown menu on the right side of the header (to the left of <code class="docutils literal notranslate"><span class="pre">Viewport</span> <span class="pre">Shading</span></code> toggles) and tick <code class="docutils literal notranslate"><span class="pre">Developer</span> <span class="pre">&gt;</span> <span class="pre">indices</span></code>.</p>
+</div>
+<div class="figure align-default">
+<img alt="../../_images/tri_quad_ngon.png" src="../../_images/tri_quad_ngon.png" />
+</div>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can find out more about topology in 3D modeling <a class="reference external" href="https://topologyguides.com/">here</a>.</p>
+</div>
+<p>Another important concept is the <strong>Pole</strong>, which are vertices connected to three, five, or more edges. They may cause issues when subdividing or deforming the mesh. A pole with three edges is called an <strong>N-Pole</strong></p>
+<div class="figure align-default">
+<img alt="../../_images/n_pole.png" src="../../_images/n_pole.png" />
+</div>
+<p>and one with five edges, usually formed as a result of <a class="reference internal" href="#mesh-editing-tools"><span class="std std-ref">extrusion</span></a>, is called an <strong>E-Pole</strong>.</p>
+<div class="figure align-default">
+<img alt="../../_images/e_pole.png" src="../../_images/e_pole.png" />
+</div>
+<p>These two kinds of poles can form naturally and are not always possible to get rid of. On the other hand, poles with six or more edges should be avoided.</p>
+</div>
+<div class="section" id="viewport-shading">
+<h2>Viewport Shading<a class="headerlink" href="#viewport-shading" title="Permalink to this headline">#</a></h2>
+<p>To have a better look at the mesh you are working on, you may want to change the type of <code class="docutils literal notranslate"><span class="pre">Viewport</span> <span class="pre">Shading</span></code>. The default is the <code class="docutils literal notranslate"><span class="pre">Solid</span> <span class="pre">Mode</span></code>, which renders the mesh objects in grayscale and assumes the light comes from the point of view.</p>
+<div class="figure align-default">
+<img alt="../../_images/viewport_shading.png" src="../../_images/viewport_shading.png" />
+</div>
+<p>If you want to check the overall structure of the mesh, you can switch it to <code class="docutils literal notranslate"><span class="pre">Wireframe</span> <span class="pre">Mode</span></code> by pressing <kbd>Z</kbd> and choosing <code class="docutils literal notranslate"><span class="pre">Wireframe</span></code> or <kbd>Left Mouse Click</kbd> on the icon located on the right part of the header. In this mode, faces will not be shaded, allowing you to see vertices and edges more clearly.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/wireframe.png"><img alt="../../_images/wireframe.png" src="../../_images/wireframe.png" style="width: 100%;" /></a>
+</div>
+<p>Sometimes you need to see and select the vertices/edges/faces on the other side of the mesh, toggling on <strong>X-Ray</strong> by pressing <kbd>Alt + Z</kbd> or <kbd>Left Mouse Click</kbd> on its icon allows you to do that.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/x-ray.png"><img alt="../../_images/x-ray.png" src="../../_images/x-ray.png" style="width: 100%;" /></a>
+</div>
+<p>The other two views, <code class="docutils literal notranslate"><span class="pre">Material</span> <span class="pre">Preview</span></code> and <code class="docutils literal notranslate"><span class="pre">Rendered</span></code>, will be introduced in later chapters.</p>
+</div>
+<div class="section" id="mesh-editing-tools">
+<span id="id1"></span><h2>Mesh editing tools<a class="headerlink" href="#mesh-editing-tools" title="Permalink to this headline">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Select</label><div class="sd-tab-content docutils">
+<p>Basic selecting works the same as in object mode (see the <a class="reference internal" href="object.html#object-tools"><span class="std std-ref">last section</span></a> for details), just make sure you are in the right select mode (vertex/edge/face). To make mesh editing easier, edit mode offers a lot more select tools, and you can find them in the <code class="docutils literal notranslate"><span class="pre">Select</span></code> menu on the header. Many of them are quite situational, but <strong>Select Loops</strong> is the one you are going to use all the time. Hold <kbd>Alt</kbd> and <kbd>Left Mouse Click</kbd> on an edge to select the whole edge loop, and it works in all 3 select modes.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p><strong>Select Loops</strong> only select the well-defined part of a loop.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/mesh_select_loop.gif"><img alt="../../_images/mesh_select_loop.gif" src="../../_images/mesh_select_loop.gif" style="width: 100%;" /></a>
+</div>
+<p><strong>Select Random</strong> helps you make irregular shapes. Choose <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">&gt;</span> <span class="pre">Select</span> <span class="pre">Random</span></code> to add random vertices/edges/faces to the selection, depending on the current <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">Mode</span></code>.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check the <strong>Scale</strong> tab for the scaling operation in this example.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/mesh_select_random.gif"><img alt="../../_images/mesh_select_random.gif" src="../../_images/mesh_select_random.gif" style="width: 100%;" /></a>
+</div>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Check <strong>Move</strong>, <strong>Extrude</strong>, and <strong>Inset</strong> tabs for the other tools used in this example.</p>
+</div>
+<p><strong>Checker Deselect</strong> is useful for creating interesting patterns. Select the vertices/edges/faces first, then choose <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">&gt;</span> <span class="pre">Checker</span> <span class="pre">Deselect</span></code> to get the effect.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/mesh_select_checker.gif"><img alt="../../_images/mesh_select_checker.gif" src="../../_images/mesh_select_checker.gif" style="width: 100%;" /></a>
+</div>
+<p>For more complex meshes, <strong>Select Linked</strong> is useful to get all connected parts. Move the cursor to the part of the mesh you want to select, then press <kbd>L</kbd> to select all connected vertices/edges/faces. Alternatively, select a vertex/edge/face, then choose <code class="docutils literal notranslate"><span class="pre">Select</span> <span class="pre">&gt;</span> <span class="pre">Select</span> <span class="pre">Linked</span> <span class="pre">&gt;</span> <span class="pre">Linked</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/mesh_select_linked.gif"><img alt="../../_images/mesh_select_linked.gif" src="../../_images/mesh_select_linked.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Move</label><div class="sd-tab-content docutils">
+<p>Similar to moving objects, you can press <kbd>G</kbd> to move vertices/edges/faces in edit mode. Locking on axes and snapping are also available here.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/mesh_move.gif"><img alt="../../_images/mesh_move.gif" src="../../_images/mesh_move.gif" style="width: 100%;" /></a>
+</div>
+<p>One useful addition is called <strong>Edge Slide</strong>, and it allows you to move vertices along edges and edges along faces. To activate it, select the vertices or edges and press <kbd>G</kbd> twice. If you want to go beyond the limit of the edges/faces, press <kbd>C</kbd> to toggle <code class="docutils literal notranslate"><span class="pre">Clamping</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/edge_slide.gif"><img alt="../../_images/edge_slide.gif" src="../../_images/edge_slide.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Rotate</label><div class="sd-tab-content docutils">
+<p>Rotating edges and faces are the same as rotating an object, see the <a class="reference internal" href="object.html#object-tools"><span class="std std-ref">last section</span></a> for details.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/mesh_rotate.gif"><img alt="../../_images/mesh_rotate.gif" src="../../_images/mesh_rotate.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Scale</label><div class="sd-tab-content docutils">
+<p>Scaling edges and faces are the same as rotating an object, see the <a class="reference internal" href="object.html#object-tools"><span class="std std-ref">last section</span></a> for details.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/mesh_scale.gif"><img alt="../../_images/mesh_scale.gif" src="../../_images/mesh_scale.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Extrude</label><div class="sd-tab-content docutils">
+<p><strong>Extrude</strong> is an essential tool for making interesting shapes. It works on vertices/edges/faces, and you can activate it by pressing <kbd>E</kbd> or <kbd>Left Mouse Click</kbd> its icon in the toolbar, then move the new vertices/edges/faces to the desired location. By default, extruded face moves along the normal but you can press <kbd>Z</kbd> to remove this restriction, otherwise locking the movement to axes works the same as the move tool. One quirk of the extrude tool is that unlike most other tools (move, rotate, scale, etc.), <kbd>Right Mouse Click</kbd> does not cancel the operation. Instead, the new vertices/edges/faces will be in the exact same place as the old one, and may cause problems down the line. A simple way to check whether there is a duplication is to select the vertices/edges/faces and try to move them a little. For the alternative extrusion modes, hold down <kbd>Left Mouse Button</kbd> on its icon on the toolbar or press <kbd>Alt + E</kbd>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/extrude.gif"><img alt="../../_images/extrude.gif" src="../../_images/extrude.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Inset Faces</label><div class="sd-tab-content docutils">
+<p>The <strong>Inset</strong> tool comes in handy when you want to create a smaller surface in an existing surface for extrusion or other purposes. Select a face then press <kbd>I</kbd> to inset it, move your cursor to adjust and <kbd>Left Mouse Click</kbd> to confirm or <kbd>Right Mouse Click</kbd> to cancel. You can also inset multiple faces simultaneously by selecting all of them, and if they are connected and you want to inset them separately, check <code class="docutils literal notranslate"><span class="pre">Indivudial</span></code> in the <code class="docutils literal notranslate"><span class="pre">Inset</span> <span class="pre">Faces</span></code> menu that appears on the bottom left.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/inset.gif"><img alt="../../_images/inset.gif" src="../../_images/inset.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Loop Cut</label><div class="sd-tab-content docutils">
+<p><strong>Loop Cut</strong> is a useful tool to add new edges while keeping the flow of the geometry. Put the cursor to where you want to add the edge loop and press <kbd>Ctrl + R</kbd> or <code class="docutils literal notranslate"><span class="pre">Edge</span> <span class="pre">&gt;</span> <span class="pre">Loop</span> <span class="pre">Cut</span> <span class="pre">and</span> <span class="pre">Slide</span></code>, then move the cursor toward the direction in which the edge loop goes. <kbd>Scroll</kbd> up to add more loops and down to subtract, <kbd>Left Mouse Click</kbd> to confirm and activate <strong>Edge Slide</strong> (check <strong>Move</strong> tag for the details). This tool does not work well with tris and N-Gons because the loop can not be defined.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/loop_cut.gif"><img alt="../../_images/loop_cut.gif" src="../../_images/loop_cut.gif" style="width: 100%;" /></a>
+</div>
+<p>You can also use it to cut a single edge or face.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/loop_cut_2.gif"><img alt="../../_images/loop_cut_2.gif" src="../../_images/loop_cut_2.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
+Knife</label><div class="sd-tab-content docutils">
+<p>The <strong>Knife</strong> tool allows you to add arbitrary edges (and vertices that come with them) to a mesh. Press <kbd>K</kbd> or <code class="docutils literal notranslate"><span class="pre">Mesh</span> <span class="pre">&gt;</span> <span class="pre">Knife</span> <span class="pre">Topology</span> <span class="pre">Tool</span></code> to activate it and the cursor turns into a knife shape. Start a cut by <kbd>Left Mouse Click</kbd>, then move the cursor and <kbd>Left Mouse Click</kbd> again to draw a line, and you can keep repeating the process. Unlike most tools in Blender, <kbd>Left Mouse Click</kbd> does not cancel the operation, but it lets you make a new starting point. By default, the tool only cuts the visible part of the mesh (even when X-ray mode is on), press <kbd>C</kbd> to cut through the entire mesh to alter that behavior. Press <kbd>Enter</kbd> to confirm the cuts or <kbd>Esc</kbd> to cancel.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<ul class="simple">
+<li><p>Holding <kbd>Shift</kbd> let you snap to the center of an edge.</p></li>
+<li><p>The knife tool is powerful but you can easily create bad topology with it if you are not careful, try other options(like <code class="docutils literal notranslate"><span class="pre">Loop</span> <span class="pre">Cut</span></code>) first.</p></li>
+</ul>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/knife.gif"><img alt="../../_images/knife.gif" src="../../_images/knife.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
+Bevel</label><div class="sd-tab-content docutils">
+<p>No edge on real-life objects are as sharp as the default cube, and the <strong>Bevel</strong> tool allows you to make rounded edges. Select the edges you want to bevel, then press <kbd>Ctrl + B</kbd> or <code class="docutils literal notranslate"><span class="pre">Edge</span> <span class="pre">&gt;</span> <span class="pre">Bevel</span> <span class="pre">Edges</span></code> to activate the tool. Drag the cursor to adjust the width and <kbd>Scroll</kbd> to increase or decrease the number of segments, then <kbd>Left Mouse Click</kbd> to confirm or <kbd>Right Mouse Click</kbd> to cancel.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/bevel.gif"><img alt="../../_images/bevel.gif" src="../../_images/bevel.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-9" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
+Subdivide</label><div class="sd-tab-content docutils">
+<p>The <strong>Subdivide</strong> tool gives you more polygons to work with. Select the faces you want to divide, then <kbd>Right Mouse Click</kbd> and choose <code class="docutils literal notranslate"><span class="pre">Subdivide</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/subdivide.gif"><img alt="../../_images/subdivide.gif" src="../../_images/subdivide.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-10" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-10">
+Delete/Dissove</label><div class="sd-tab-content docutils">
+<p>Select the vertices/edges/faces to delete and press <kbd>X</kbd> to bring up the <code class="docutils literal notranslate"><span class="pre">Delete</span></code> menu, then choose to <code class="docutils literal notranslate"><span class="pre">Delete</span></code>/<code class="docutils literal notranslate"><span class="pre">Dissolve</span></code> them. Deleting vertices/edges will also delete the edges/faces which are dependent on them; dissolving will try to keep the geometry intact.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/mesh_delete.gif"><img alt="../../_images/mesh_delete.gif" src="../../_images/mesh_delete.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-11" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-11">
+Merge</label><div class="sd-tab-content docutils">
+<p>Select the vertices to merge and press <kbd>M</kbd> to bring up the <code class="docutils literal notranslate"><span class="pre">Merge</span></code> menu, then choose an option to decide where the merged vertex should be.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/merge.gif"><img alt="../../_images/merge.gif" src="../../_images/merge.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-12" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-12">
+Rip</label><div class="sd-tab-content docutils">
+<p>The <strong>Rip</strong> tool makes copies of selected vertices/edges and creates a hole in the geometry, press <kbd>V</kbd> or choose the <code class="docutils literal notranslate"><span class="pre">Rip</span> <span class="pre">Region</span></code> tool in the toolbar to activate it.</p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The vertices/edges selected after ripping depends on the position of your cursor.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/rip.gif"><img alt="../../_images/rip.gif" src="../../_images/rip.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-13" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-13">
+Fill</label><div class="sd-tab-content docutils">
+<p>The <strong>Fill</strong> tool let you connect vertices to make new edges or faces. For the former, select two vertices and press <kbd>F</kbd>; for the latter, select 3 or more vertices (2 or more edges work too) then press <kbd>F</kbd>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/fill.gif"><img alt="../../_images/fill.gif" src="../../_images/fill.gif" style="width: 100%;" /></a>
+</div>
+<p>If the new face you are trying to create is going to be an N-Gon, <strong>Grid Fill</strong> can help you avoid that. select the edges (This tool only works on a closed edge loop or a pair of opposite edge loops) and press <kbd>Ctrl + F</kbd> or <kbd>Left Mouse Click</kbd> <code class="docutils literal notranslate"><span class="pre">Face</span></code> on the header to bring up the face menu, then choose <code class="docutils literal notranslate"><span class="pre">Grid</span> <span class="pre">Fill</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/grid_fill.gif"><img alt="../../_images/grid_fill.gif" src="../../_images/grid_fill.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-14" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-14">
+Separate</label><div class="sd-tab-content docutils">
+<p>Reusing part of an existing object can save you a lot of time. Select a part of a mesh (copy it first if you still need it in the original) and press <kbd>P</kbd> or choose <code class="docutils literal notranslate"><span class="pre">Mesh</span> <span class="pre">&gt;</span> <span class="pre">Separate</span></code> on the header to bring up the <code class="docutils literal notranslate"><span class="pre">Separate</span></code> menu, then select <code class="docutils literal notranslate"><span class="pre">Selection</span></code>.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/separate.gif"><img alt="../../_images/separate.gif" src="../../_images/separate.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-15" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-15">
+Proportional Editing</label><div class="sd-tab-content docutils">
+<p><strong>Proportional Editing</strong> is not a mesh editing tool by itself, but tuning it on allows <strong>Move</strong>/<strong>Rotate</strong>/<strong>Scale</strong> tool to influence adjacent vertices/edges/faces. Press <kbd>O</kbd> or <kbd>Left Mouse Click</kbd></p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/suzanne_proportional_1.gif"><img alt="../../_images/suzanne_proportional_1.gif" src="../../_images/suzanne_proportional_1.gif" style="width: 100%;" /></a>
+</div>
+<p>It is especially helpful if you need to edit high poly mesh.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/suzanne_proportional_2.gif"><img alt="../../_images/suzanne_proportional_2.gif" src="../../_images/suzanne_proportional_2.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+<p>Check the end of this chapter to see how these essential tools are used in mesh modeling.</p>
+</div>
+<div class="section" id="tips">
+<h2>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-16" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-16">
+Low poly</label><div class="sd-tab-content docutils">
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Use <strong>Proportional Editing</strong> may help if you need to edit High poly mesh.</p>
+</div>
+<p>Always start with low poly mesh. High poly mesh is harder to work with, and it is much easier to turn low poly mesh into high poly ones (e.g. adding <a class="reference internal" href="modifier.html#modifier-common"><span class="std std-ref">Subdivide Surface modifier</span></a>) than the opposite.</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/suzanne_low_high_poly.gif"><img alt="../../_images/suzanne_low_high_poly.gif" src="../../_images/suzanne_low_high_poly.gif" style="width: 100%;" /></a>
+</div>
+</div>
+<input id="sd-tab-item-17" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-17">
+Topology</label><div class="sd-tab-content docutils">
+<p><strong>Topology</strong> refers to the distribution of vertices, edges, and faces in 3d modeling, and how to keep it clean is an important but complicated topic. For beginners, following these points would be a good start:</p>
+<ul class="simple">
+<li><p>Avoid N-Gon, and try to use quad as much as possible</p></li>
+<li><p>Keep mesh density even</p></li>
+<li><p>Keep an eye on duplicated vertices, edges, and faces, especially when extruding</p></li>
+<li><p>Make sure normals are pointing right directions</p></li>
+</ul>
+</div>
+<input id="sd-tab-item-18" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-18">
+Use Reference</label><div class="sd-tab-content docutils">
+<p>It definitely helps to make your 3D model look right if you have reference pictures. To add a reference image to the viewport, drag the file into the viewport or press <kbd>Shift + A</kbd> and choose <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Reference</span></code> and find the file in the browser. Adjust the location and rotation of the references for the three views so they line up, then <kbd>Left Mouse Click</kbd> on the cursor icon in the outliner for the reference objects to disable selection so you will not accidentally select them during modeling. Finally, you can make them only visible in the front, side, and top views, by unchecking <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Data</span> <span class="pre">Properties</span> <span class="pre">&gt;</span> <span class="pre">Empty</span> <span class="pre">&gt;</span> <span class="pre">Show</span> <span class="pre">In</span> <span class="pre">Perspective</span></code></p>
+<div class="margin admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If the cursor icon for disabling selection is not there, <kbd>Left Mouse Click</kbd> on the funnel icon on the header of the outliner area, and turn it on under <code class="docutils literal notranslate"><span class="pre">Restriction</span> <span class="pre">Toggles</span></code>.</p>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../_images/reference_img.gif"><img alt="../../_images/reference_img.gif" src="../../_images/reference_img.gif" style="width: 100%;" /></a>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./markdown\modeling"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="object.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Object</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="curve.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Curve Modeling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#edit-mode">Edit Mode</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vertex-edge-and-face">Vertex, Edge, and Face</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tri-quad-n-gon-and-pole">Tri, Quad, N-Gon, and Pole</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#viewport-shading">Viewport Shading</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mesh-editing-tools">Mesh editing tools</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tips">Tips</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Graduate Program in Data Science, Tohoku University
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
