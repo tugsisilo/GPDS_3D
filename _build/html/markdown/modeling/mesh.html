@@ -602,11 +602,11 @@ Rip</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-13" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-13">
 Fill</label><div class="sd-tab-content docutils">
-<p>The <strong>Fill</strong> tool let you connect vertices to make new edges or faces. For the former, select two vertices and press <kbd>F</kbd>; for the latter, select 3 or more vertices (2 or more edges work too) then press <kbd>F</kbd>.</p>
+<p>The <strong>Fill</strong> tool lets you connect vertices to make new edges or faces. For the former, select two vertices and press <kbd>F</kbd>; for the latter, select 3 or more vertices (2 or more edges work too) then press <kbd>F</kbd>.</p>
 <div class="figure align-default">
 <a class="reference internal image-reference" href="../../_images/fill.gif"><img alt="../../_images/fill.gif" src="../../_images/fill.gif" style="width: 100%;" /></a>
 </div>
-<p>If the new face you are trying to create is going to be an N-Gon, <strong>Grid Fill</strong> can help you avoid that. select the edges (This tool only works on a closed edge loop or a pair of opposite edge loops) and press <kbd>Ctrl + F</kbd> or <kbd>Left Mouse Click</kbd> <code class="docutils literal notranslate"><span class="pre">Face</span></code> on the header to bring up the face menu, then choose <code class="docutils literal notranslate"><span class="pre">Grid</span> <span class="pre">Fill</span></code>.</p>
+<p>If the new face you are trying to create is going to be an N-Gon, <strong>Grid Fill</strong> can help you avoid that. Select the edges (This tool only works on a closed edge loop or a pair of opposite edge loops) and press <kbd>Ctrl + F</kbd> or <kbd>Left Mouse Click</kbd> <code class="docutils literal notranslate"><span class="pre">Face</span></code> on the header to bring up the face menu, then choose <code class="docutils literal notranslate"><span class="pre">Grid</span> <span class="pre">Fill</span></code>.</p>
 <div class="figure align-default">
 <a class="reference internal image-reference" href="../../_images/grid_fill.gif"><img alt="../../_images/grid_fill.gif" src="../../_images/grid_fill.gif" style="width: 100%;" /></a>
 </div>
@@ -644,7 +644,7 @@ Low poly</label><div class="sd-tab-content docutils">
 <p class="admonition-title">Tip</p>
 <p>Use <strong>Proportional Editing</strong> may help if you need to edit High poly mesh.</p>
 </div>
-<p>Always start with low poly mesh. High poly mesh is harder to work with, and it is much easier to turn low poly mesh into high poly ones (e.g. adding <a class="reference internal" href="modifier.html#modifier-common"><span class="std std-ref">Subdivide Surface modifier</span></a>) than the opposite.</p>
+<p>Always start with low poly mesh. High poly mesh is harder to work with, and it is much easier to turn low poly mesh into high poly ones (e.g. adding a <a class="reference internal" href="modifier.html#modifier-common"><span class="std std-ref">Subdivide Surface modifier</span></a>) than the opposite.</p>
 <div class="figure align-default">
 <a class="reference internal image-reference" href="../../_images/suzanne_low_high_poly.gif"><img alt="../../_images/suzanne_low_high_poly.gif" src="../../_images/suzanne_low_high_poly.gif" style="width: 100%;" /></a>
 </div>
@@ -652,7 +652,7 @@ Low poly</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-17" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-17">
 Topology</label><div class="sd-tab-content docutils">
-<p><strong>Topology</strong> refers to the distribution of vertices, edges, and faces in 3d modeling, and how to keep it clean is an important but complicated topic. For beginners, following these points would be a good start:</p>
+<p><strong>Topology</strong> refers to the distribution of vertices, edges, and faces in 3D modeling, and how to keep it clean is an important but complicated topic. For beginners, following these points would be a good start:</p>
 <ul class="simple">
 <li><p>Avoid N-Gon, and try to use quad as much as possible</p></li>
 <li><p>Keep mesh density even</p></li>
@@ -666,7 +666,10 @@ Use Reference</label><div class="sd-tab-content docutils">
 <p>It definitely helps to make your 3D model look right if you have reference pictures. To add a reference image to the viewport, drag the file into the viewport or press <kbd>Shift + A</kbd> and choose <code class="docutils literal notranslate"><span class="pre">Image</span> <span class="pre">&gt;</span> <span class="pre">Reference</span></code> and find the file in the browser. Adjust the location and rotation of the references for the three views so they line up, then <kbd>Left Mouse Click</kbd> on the cursor icon in the outliner for the reference objects to disable selection so you will not accidentally select them during modeling. Finally, you can make them only visible in the front, side, and top views, by unchecking <code class="docutils literal notranslate"><span class="pre">Object</span> <span class="pre">Data</span> <span class="pre">Properties</span> <span class="pre">&gt;</span> <span class="pre">Empty</span> <span class="pre">&gt;</span> <span class="pre">Show</span> <span class="pre">In</span> <span class="pre">Perspective</span></code></p>
 <div class="margin admonition tip">
 <p class="admonition-title">Tip</p>
-<p>If the cursor icon for disabling selection is not there, <kbd>Left Mouse Click</kbd> on the funnel icon on the header of the outliner area, and turn it on under <code class="docutils literal notranslate"><span class="pre">Restriction</span> <span class="pre">Toggles</span></code>.</p>
+<ul class="simple">
+<li><p>If the cursor icon for disabling selection is not there, <kbd>Left Mouse Click</kbd> on the funnel icon on the header of the outliner area, and turn it on under <code class="docutils literal notranslate"><span class="pre">Restriction</span> <span class="pre">Toggles</span></code>.</p></li>
+<li><p>To prevent the reference images from blocking your 3D object, choose the <code class="docutils literal notranslate"><span class="pre">Back</span></code> option for <code class="docutils literal notranslate"><span class="pre">Depth</span></code> in the <code class="docutils literal notranslate"><span class="pre">Data</span></code> tab of the properties area.</p></li>
+</ul>
 </div>
 <div class="figure align-default">
 <a class="reference internal image-reference" href="../../_images/reference_img.gif"><img alt="../../_images/reference_img.gif" src="../../_images/reference_img.gif" style="width: 100%;" /></a>

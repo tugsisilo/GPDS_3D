@@ -261,13 +261,13 @@ The vertices/edges selected after ripping depends on the position of your cursor
 :::
 
 :::{tab-item} Fill
-The **Fill** tool let you connect vertices to make new edges or faces. For the former, select two vertices and press <kbd>F</kbd>; for the latter, select 3 or more vertices (2 or more edges work too) then press <kbd>F</kbd>.
+The **Fill** tool lets you connect vertices to make new edges or faces. For the former, select two vertices and press <kbd>F</kbd>; for the latter, select 3 or more vertices (2 or more edges work too) then press <kbd>F</kbd>.
 
 ```{figure} ../../assets/modeling/fill.gif
 :width: 100%
 ```
 
-If the new face you are trying to create is going to be an N-Gon, **Grid Fill** can help you avoid that. select the edges (This tool only works on a closed edge loop or a pair of opposite edge loops) and press <kbd>Ctrl + F</kbd> or <kbd>Left Mouse Click</kbd> `Face` on the header to bring up the face menu, then choose `Grid Fill`. 
+If the new face you are trying to create is going to be an N-Gon, **Grid Fill** can help you avoid that. Select the edges (This tool only works on a closed edge loop or a pair of opposite edge loops) and press <kbd>Ctrl + F</kbd> or <kbd>Left Mouse Click</kbd> `Face` on the header to bring up the face menu, then choose `Grid Fill`. 
 ```{figure} ../../assets/modeling/grid_fill.gif
 :width: 100%
 ```
@@ -312,7 +312,7 @@ Check the end of this chapter to see how these essential tools are used in mesh 
 :class: margin
 Use **Proportional Editing** may help if you need to edit High poly mesh.
 ```
-Always start with low poly mesh. High poly mesh is harder to work with, and it is much easier to turn low poly mesh into high poly ones (e.g. adding [Subdivide Surface modifier](modifier:common)) than the opposite.
+Always start with low poly mesh. High poly mesh is harder to work with, and it is much easier to turn low poly mesh into high poly ones (e.g. adding a [Subdivide Surface modifier](modifier:common)) than the opposite.
 
 ```{figure} ../../assets/modeling/suzanne_low_high_poly.gif
 :width: 100%
@@ -322,7 +322,7 @@ Always start with low poly mesh. High poly mesh is harder to work with, and it i
 :::
 
 :::{tab-item} Topology
-**Topology** refers to the distribution of vertices, edges, and faces in 3d modeling, and how to keep it clean is an important but complicated topic. For beginners, following these points would be a good start:
+**Topology** refers to the distribution of vertices, edges, and faces in 3D modeling, and how to keep it clean is an important but complicated topic. For beginners, following these points would be a good start:
 
 - Avoid N-Gon, and try to use quad as much as possible
 - Keep mesh density even
@@ -336,7 +336,8 @@ It definitely helps to make your 3D model look right if you have reference pictu
 
 ```{tip}
 :class: margin
-If the cursor icon for disabling selection is not there, <kbd>Left Mouse Click</kbd> on the funnel icon on the header of the outliner area, and turn it on under `Restriction Toggles`.
+- If the cursor icon for disabling selection is not there, <kbd>Left Mouse Click</kbd> on the funnel icon on the header of the outliner area, and turn it on under `Restriction Toggles`.
+- To prevent the reference images from blocking your 3D object, choose the `Back` option for `Depth` in the `Data` tab of the properties area.
 ```
 
 ```{figure} ../../assets/modeling/reference_img.gif
