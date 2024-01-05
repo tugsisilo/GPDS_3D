@@ -1,5 +1,4 @@
 (Lighting)=
-
 # Lighting
 Without light, you are not able to see anything, and so is the camera. **Lighting** can drastically change the look of a 3D scene, just like in real life.
 

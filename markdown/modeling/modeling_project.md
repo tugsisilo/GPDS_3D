@@ -1,5 +1,4 @@
 (modeling_proj)=
-
 # Projects
 Here are some examples made using the tools introduced in this chapter. Feel free to put your own spin on them if you want to try them out, and don't forget to save because you will need them again next chapter.
 ::::{tab-set}

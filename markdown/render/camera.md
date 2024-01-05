@@ -1,5 +1,4 @@
 (Camera)=
-
 # Camera
 A **Camera** object provides the point of view for rendering, and unlike its real-life counterpart, they are invisible.
 

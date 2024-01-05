@@ -1,5 +1,4 @@
 (gn_more_nodes)=
-
 # More about Geometry Node
 The `Add` menu in the geometry node editor looks much more crowded than the shader node one, but you do not have to know all the nodes to start using it. In this section, we will go through some of the most used nodes.
 

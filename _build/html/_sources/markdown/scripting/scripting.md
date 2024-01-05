@@ -1,5 +1,4 @@
 (scripting)=
-
 # Scripting
 ```{figure} ../../assets/scripting/opening.gif
 

@@ -1,5 +1,4 @@
 (modeling)=
-
 # Modeling
 ```{figure} ../../assets/modeling/opening.gif
 :width: 100%

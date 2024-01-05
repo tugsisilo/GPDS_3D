@@ -1,5 +1,4 @@
 (phys_parti)= 
-
 # Physics Simulation and Particle System
 Blender offers tools to simulate real-world physics with the 3D objects you created, let's see how to set it up.
 ```{tip} 

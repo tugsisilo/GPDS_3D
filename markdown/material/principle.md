@@ -34,6 +34,14 @@ To add materials to an object, first select the object and switch the tab in the
 The material may look different between **EEVEE** and **Cycles** [render engine](render_engine), and some options only work for **Cycles**.
 ```
 When you clicked on `New`, a material with one **Principled Bidirectional Scattering Distribution Function (BSDF)** shader is created. This shader has multiple layers and is very versatile, let's see some of its capabilities.
+
+````{admonition} In Blender 4.0
+:class: dropdown
+The majority of the inputs have been rearranged into groups, you can access them in the dropdown menus.
+```{figure} ../../assets/material/p_bsdf_4_0.png
+
+```
+````
 ::::{tab-set}
 :::{tab-item} Base Color
 The `Base Color` is the surface color of a material. <kbd>Left Mouse Click</kbd> the color to change it.
@@ -86,6 +94,9 @@ If the `Roughness` is not 0, you can adjust `Anisotropic` and `Anisotropic Rotat
 :::
 
 :::{tab-item} Clearcoat
+```{tip}
+`Clearcoat` has been renamed as `Coat` since Blender 4.0
+```
 If you love cars, this one is for you. `Clearcoat` adds a specular layer on top of the material to mimic the protective top coat, and `Clearcoat Roughness` controls the roughness of the coating surface.
 ```{figure} ../../assets/material/pbsdf_topcoat_comp.png
 :width: 100%

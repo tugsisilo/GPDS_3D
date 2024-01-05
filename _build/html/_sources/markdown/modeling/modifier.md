@@ -9,6 +9,15 @@ Modifiers are properties of an object, to add one, make sure you are in object m
 
 ```
 
+````{admonition} In Blender 4.0
+:class: dropdown
+The `Add Modifier` menu has been redesigned.
+```{figure} ../../assets/modeling/add_mod_4_0.gif
+
+```
+````
+
+
 ```{tip}
 :class: margin
 Modifiers apply before object transfomation, if the object has been trasformed (especially scaled), some modifiers may not behave as expected. To avoid that, ou can select an object and press <kbd>Ctrl + A</kbd> to bring up the `Apply` menu and apply object transformation to mesh data.

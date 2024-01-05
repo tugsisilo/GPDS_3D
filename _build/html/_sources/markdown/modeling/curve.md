@@ -1,5 +1,4 @@
 (curve)=
-
 # Curve Modeling
 
 Though you probably can make everything just using mesh modeling, in some cases other tools can be more handy. For making pipes, ropes, or vector shapes, **Curve modeling** may save you a lot of trouble.

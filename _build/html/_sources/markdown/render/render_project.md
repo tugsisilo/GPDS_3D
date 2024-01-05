@@ -1,5 +1,4 @@
 (render_proj)=
-
 # Projects
 Time for the final result. Set up lighting and camera using the features introduced in this chapter and render your 3D scene, here are some examples.
 ::::{tab-set}

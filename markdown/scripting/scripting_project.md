@@ -1,5 +1,4 @@
 (scripting_proj)=
-
 # Projects
 
 ::::{tab-set}

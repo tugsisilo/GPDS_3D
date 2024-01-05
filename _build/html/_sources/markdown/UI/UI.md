@@ -1,5 +1,4 @@
 (UI_top)=
-
 # UI
 
 ```{figure} ../../assets/UI/UI.png

@@ -1,5 +1,4 @@
 (mesh_editing)=
-
 # Mesh Modeling
 
 **Mesh Modeling** is the most common way to make 3D models for all kinds of things. Before we dive into how we do it, let's go through some basics first.

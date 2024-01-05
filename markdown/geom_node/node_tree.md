@@ -1,5 +1,4 @@
 (gn_nodes)=
-
 # Geometry Node Basics
 If you have already mastered [shader nodes](PBR_mat), then you get yourself a head start in **Geometry Nodes**. Node-related operations, such as adding, linking, and arranging nodes, stay the same, refer to that chapter when you want a refresher.
 
