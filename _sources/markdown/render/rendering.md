@@ -1,5 +1,4 @@
 (Rendering)=
-
 # Rendering
 At last, with all the objects, cameras, and lights put in place, we are ready to turn our 3D scene into a 2D image, and this process is called **Rendering**.
 

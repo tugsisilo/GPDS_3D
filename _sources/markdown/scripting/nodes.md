@@ -1,5 +1,4 @@
 (node_scripting)=
-
 # Node Scripting
 You have already seen the power of the node trees in Blender, and now you can make them with Python script.
 

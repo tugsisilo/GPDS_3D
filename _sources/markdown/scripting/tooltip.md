@@ -1,5 +1,4 @@
 (tooltip)=
-
 # Scripting Basics
 It is finally time to put your Python skill to good use, but before you start coding, take some time to make preparations will make your life much easier.
 

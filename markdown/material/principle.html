@@ -399,6 +399,13 @@ document.write(`
 <p>The material may look different between <strong>EEVEE</strong> and <strong>Cycles</strong> <a class="reference internal" href="../render/engine.html#render-engine"><span class="std std-ref">render engine</span></a>, and some options only work for <strong>Cycles</strong>.</p>
 </div>
 <p>When you clicked on <code class="docutils literal notranslate"><span class="pre">New</span></code>, a material with one <strong>Principled Bidirectional Scattering Distribution Function (BSDF)</strong> shader is created. This shader has multiple layers and is very versatile, let’s see some of its capabilities.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">In Blender 4.0</p>
+<p>The majority of the inputs have been rearranged into groups, you can access them in the dropdown menus.</p>
+<div class="figure align-default">
+<img alt="../../_images/p_bsdf_4_0.png" src="../../_images/p_bsdf_4_0.png" />
+</div>
+</div>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -455,6 +462,10 @@ Roughness</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-4">
 Clearcoat</label><div class="sd-tab-content docutils">
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p><code class="docutils literal notranslate"><span class="pre">Clearcoat</span></code> has been renamed as <code class="docutils literal notranslate"><span class="pre">Coat</span></code> since Blender 4.0</p>
+</div>
 <p>If you love cars, this one is for you. <code class="docutils literal notranslate"><span class="pre">Clearcoat</span></code> adds a specular layer on top of the material to mimic the protective top coat, and <code class="docutils literal notranslate"><span class="pre">Clearcoat</span> <span class="pre">Roughness</span></code> controls the roughness of the coating surface.</p>
 <div class="figure align-default">
 <a class="reference internal image-reference" href="../../_images/pbsdf_topcoat_comp.png"><img alt="../../_images/pbsdf_topcoat_comp.png" src="../../_images/pbsdf_topcoat_comp.png" style="width: 100%;" /></a>

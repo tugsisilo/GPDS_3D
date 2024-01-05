@@ -1,5 +1,4 @@
 (Extras)=
-
 # Extras
 
 ```{figure} ../../assets/extra/opening.gif

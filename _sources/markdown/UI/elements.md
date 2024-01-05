@@ -1,5 +1,4 @@
 (elements)=
-
 # Elements
 ```{tip} 
 :class: margin

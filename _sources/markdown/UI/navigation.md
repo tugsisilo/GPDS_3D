@@ -1,5 +1,4 @@
 (navigation)=
-
 # Navigation
 
 Navigating the 3D space on a 2D screen may take a bit of getting used to, but if you've played any city-builders or tycoon games, now you can tell your mom what a great learning experience that has been. In this section, we will focus on the **3D Viewport** area, make sure you have one on your screen if you changed the default layout in the last section.
